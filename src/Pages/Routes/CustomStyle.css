@@ -1,0 +1,4 @@
+/* customStyles.css */
+.placeholder-indigo::placeholder {
+    @apply text-indigo-500; /* Apply Tailwind's text color */
+}
