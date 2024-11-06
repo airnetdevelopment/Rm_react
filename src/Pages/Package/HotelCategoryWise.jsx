@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Button } from 'primereact/button';
-import { Tooltip } from 'primereact/tooltip';
-import nonrefundable from '../../assets/Iconslatestpackage/nonrefundable.png';
-import refundable from '../../assets/Iconslatestpackage/refundable.png';
-import notavailable from '../../assets/Iconslatestpackage/notavailable.png';
-import available from '../../assets/Iconslatestpackage/available.png';
-import coachclass from '../../assets/Iconslatestpackage/coach-class.png';
-import { Image } from 'primereact/image';
-import group from '../../assets/Iconslatestpackage/group.png';
+import React, { useEffect, useState } from "react";
+import { Button } from "primereact/button";
+import { Tooltip } from "primereact/tooltip";
+import nonrefundable from "../../assets/Iconslatestpackage/nonrefundable.png";
+import refundable from "../../assets/Iconslatestpackage/refundable.png";
+import notavailable from "../../assets/Iconslatestpackage/notavailable.png";
+import available from "../../assets/Iconslatestpackage/available.png";
+import coachclass from "../../assets/Iconslatestpackage/coach-class.png";
+import { Image } from "primereact/image";
+import group from "../../assets/Iconslatestpackage/group.png";
 
 const HotelsCategoryWise = () => {
     // const [isHotelAvailable, setIsHotelAvailable] = useState(true);
     // const [cityItineraryDetails, setCityItineraryDetails] = useState({
-        // cityEvents: [],
-        // hotel: {},
+    // cityEvents: [],
+    // hotel: {},
     // });
-    const [hotelId, setHotelId] = useState('');
+    const [hotelId, setHotelId] = useState("");
 
     // useEffect(() => {
     //     if (eventUid) {
@@ -92,8 +92,8 @@ const HotelsCategoryWise = () => {
                         <h4 className="text-xl font-bold mb-2 text-left text-black">Deluxe Double Room</h4>
                         <div className="flex items-center text-sm mb-2">
                             <span className="flex items-center">
-                            <Image src={available ? available : notavailable} alt={available ? "Available" : "Not Available"} className="absolute top-1 h-8 w-24 right-2 rounded-lg mr-0" />
-                            <Image src={refundable ? refundable : nonrefundable} alt={refundable ? "Refundable" : "Non Refundable"} className="w-4 h-4 mr-2" />
+                                <Image src={available ? available : notavailable} alt={available ? "Available" : "Not Available"} className="absolute top-1 h-8 w-24 right-2 rounded-lg mr-0" />
+                                <Image src={refundable ? refundable : nonrefundable} alt={refundable ? "Refundable" : "Non Refundable"} className="w-4 h-4 mr-2" />
                                 <span className="mr-4">Refundable</span>
                             </span>
                             <span className="flex items-center">
@@ -103,15 +103,15 @@ const HotelsCategoryWise = () => {
                         </div>
                         <div className="flex items-center text-sm mb-2">
                             <div className='flex items-center'>
-                            <span className="mr-2 bg-gray-100 rounded-md p-2 text-black font-bold">4★ Hotel</span>
-                            <span className="mr-2 bg-gray-100 rounded-md p-2 text-black font-bold">7.2/10</span>
-                            <span className='mr-6'>Bookings.com</span>
+                                <span className="mr-2 bg-gray-100 rounded-md p-2 text-black font-bold">4★ Hotel</span>
+                                <span className="mr-2 bg-gray-100 rounded-md p-2 text-black font-bold">7.2/10</span>
+                                <span className='mr-6'>Bookings.com</span>
                             </div>
                             <div className='flex items-center'>
-                            <span className="mr-2 text-black font-bold">Check-In:</span>
-                            <span className="mr-2 text-black">12:00 PM</span>
-                            <span className="mr-2 text-black font-bold">Check-Out:</span>
-                            <span className="mr-2 text-black">2:00 PM</span>
+                                <span className="mr-2 text-black font-bold">Check-In:</span>
+                                <span className="mr-2 text-black">12:00 PM</span>
+                                <span className="mr-2 text-black font-bold">Check-Out:</span>
+                                <span className="mr-2 text-black">2:00 PM</span>
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-2 text-sm mb-4">

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Dialog } from 'primereact/dialog';
-import { Button } from 'primereact/button';
-import { useEffect } from 'react';
+import React, { useState } from "react";
+import { Dialog } from "primereact/dialog";
+import { Button } from "primereact/button";
+import { useEffect } from "react";
 
 const NightsDialog = ({ visible, onHide , cities }) => {
     const [nights, setNights] = useState({}); 
@@ -26,8 +26,8 @@ const NightsDialog = ({ visible, onHide , cities }) => {
         setExclusiveSights(exclusiveSightsObj);
     };
 
-     // Call initializeState when the modal opens
-     React.useEffect(() => {
+    // Call initializeState when the modal opens
+    React.useEffect(() => {
         if (visible) {
             initializeState();
         }
@@ -89,65 +89,65 @@ const NightsDialog = ({ visible, onHide , cities }) => {
         //     </div>
         // </Dialog>
         <Dialog header="Add Nights and SightSeeings" visible={visible} onHide={onHide} footer={footer}>
-        <div className='flex flex-col'>
+            <div className='flex flex-col'>
             
-            {cities.map(city => (
-                <div key={city.id} className='rounded'>
-                    <h3 className='font-semibold p-1 underline text-md'>{city.city_name}</h3>
-                    <div className="flex flex-row space-x-4">
-                        <div className="flex align-items-center">
-                            <label className="mx-2">Nights:</label>
-                            <Button icon="pi pi-minus" onClick={() => decrementNights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
-                            <label className="mx-2 border-2 border-gray-200 h-6 w-6 pl-1 pr-1">{nights[city.id]}</label>
-                            <Button icon="pi pi-plus" onClick={() => incrementNights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
-                        </div>
-                        <div className="flex align-items-center pl-3">
-                            <label className="mx-2">Inclusive SightSeeings:</label>
-                            <Button icon="pi pi-minus" onClick={() => decrementInclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
-                            <label className="mx-2 border-2 border-gray-200 h-6 w-6 pl-1 pr-1">{inclusiveSights[city.id]}</label>
-                            <Button icon="pi pi-plus" onClick={() => incrementInclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
-                        </div>
-                        <div className="flex align-items-center pl-3">
-                            <label className="mx-2">Exclusive SightSeeings:</label>
-                            <Button icon="pi pi-minus" onClick={() => decrementExclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
-                            <label className="mx-2 border-2 border-gray-200 h-6 w-6 pl-1 pr-1">{exclusiveSights[city.id]}</label>
-                            <Button icon="pi pi-plus" onClick={() => incrementExclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
+                {cities.map(city => (
+                    <div key={city.id} className='rounded'>
+                        <h3 className='font-semibold p-1 underline text-md'>{city.city_name}</h3>
+                        <div className="flex flex-row space-x-4">
+                            <div className="flex align-items-center">
+                                <label className="mx-2">Nights:</label>
+                                <Button icon="pi pi-minus" onClick={() => decrementNights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
+                                <label className="mx-2 border-2 border-gray-200 h-6 w-6 pl-1 pr-1">{nights[city.id]}</label>
+                                <Button icon="pi pi-plus" onClick={() => incrementNights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
+                            </div>
+                            <div className="flex align-items-center pl-3">
+                                <label className="mx-2">Inclusive SightSeeings:</label>
+                                <Button icon="pi pi-minus" onClick={() => decrementInclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
+                                <label className="mx-2 border-2 border-gray-200 h-6 w-6 pl-1 pr-1">{inclusiveSights[city.id]}</label>
+                                <Button icon="pi pi-plus" onClick={() => incrementInclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
+                            </div>
+                            <div className="flex align-items-center pl-3">
+                                <label className="mx-2">Exclusive SightSeeings:</label>
+                                <Button icon="pi pi-minus" onClick={() => decrementExclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
+                                <label className="mx-2 border-2 border-gray-200 h-6 w-6 pl-1 pr-1">{exclusiveSights[city.id]}</label>
+                                <Button icon="pi pi-plus" onClick={() => incrementExclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
-        </div>
-    </Dialog>
+                ))}
+            </div>
+        </Dialog>
 
-//     <Dialog header="Add Nights and SightSeeings" visible={visible} onHide={onHide} footer={footer}>
-//     <div className='flex flex-col space-y-4'>
-//         {cities.map(city => (
-//             <div key={city.id} className='flex flex-row items-center justify-between'>
-//                 <label className='font-bold'>{city.city_name}</label>
-//                 <div className='flex flex-col space-y-1'>
-//                     <div className="flex align-items-center">
-//                         <label className="mx-2">Number Of Nights:</label>
-//                         <Button icon="pi pi-minus" onClick={() => decrementNights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
-//                         <label className="mx-2 border-2 border-gray-200 h-6 w-12 text-center">{nights[city.id]}</label>
-//                         <Button icon="pi pi-plus" onClick={() => incrementNights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
-//                     </div>
-//                     <div className="flex align-items-center">
-//                         <label className="mx-2">Inclusive SightSeeings:</label>
-//                         <Button icon="pi pi-minus" onClick={() => decrementInclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
-//                         <label className="mx-2 border-2 border-gray-200 h-6 w-12 text-center">{inclusiveSights[city.id]}</label>
-//                         <Button icon="pi pi-plus" onClick={() => incrementInclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
-//                     </div>
-//                     <div className="flex align-items-center">
-//                         <label className="mx-2">Exclusive SightSeeings:</label>
-//                         <Button icon="pi pi-minus" onClick={() => decrementExclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
-//                         <label className="mx-2 border-2 border-gray-200 h-6 w-12 text-center">{exclusiveSights[city.id]}</label>
-//                         <Button icon="pi pi-plus" onClick={() => incrementExclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
-//                     </div>
-//                 </div>
-//             </div>
-//         ))}
-//     </div>
-// </Dialog>
+    //     <Dialog header="Add Nights and SightSeeings" visible={visible} onHide={onHide} footer={footer}>
+    //     <div className='flex flex-col space-y-4'>
+    //         {cities.map(city => (
+    //             <div key={city.id} className='flex flex-row items-center justify-between'>
+    //                 <label className='font-bold'>{city.city_name}</label>
+    //                 <div className='flex flex-col space-y-1'>
+    //                     <div className="flex align-items-center">
+    //                         <label className="mx-2">Number Of Nights:</label>
+    //                         <Button icon="pi pi-minus" onClick={() => decrementNights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
+    //                         <label className="mx-2 border-2 border-gray-200 h-6 w-12 text-center">{nights[city.id]}</label>
+    //                         <Button icon="pi pi-plus" onClick={() => incrementNights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
+    //                     </div>
+    //                     <div className="flex align-items-center">
+    //                         <label className="mx-2">Inclusive SightSeeings:</label>
+    //                         <Button icon="pi pi-minus" onClick={() => decrementInclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
+    //                         <label className="mx-2 border-2 border-gray-200 h-6 w-12 text-center">{inclusiveSights[city.id]}</label>
+    //                         <Button icon="pi pi-plus" onClick={() => incrementInclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
+    //                     </div>
+    //                     <div className="flex align-items-center">
+    //                         <label className="mx-2">Exclusive SightSeeings:</label>
+    //                         <Button icon="pi pi-minus" onClick={() => decrementExclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
+    //                         <label className="mx-2 border-2 border-gray-200 h-6 w-12 text-center">{exclusiveSights[city.id]}</label>
+    //                         <Button icon="pi pi-plus" onClick={() => incrementExclusiveSights(city.id)} className="p-button-outlined bg-red-500 text-white h-6 w-6" />
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         ))}
+    //     </div>
+    // </Dialog>
     );
 };
 

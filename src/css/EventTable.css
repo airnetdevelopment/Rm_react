@@ -1,0 +1,68 @@
+.event-div {
+    position: relative;
+      width: 14rem; /* Fixed width for all event divs */
+      height: 6rem !important;
+      font-size: 11px;
+      display: flex; /* Center content */
+      align-items: center; /* Center items vertically */
+      justify-content: center; /* Center items horizontally */
+      transition: box-shadow 0.3s; /* Transition effect for glow */
+      text-align: center;
+      /* overflow-x: auto; */
+    }
+    .info-icon {
+      position: absolute;
+      z-index: 1;
+      font-style: italic;
+      top: -5px;
+      padding: 4px;
+      right: 5px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #666; /* Customize the color */
+      cursor: pointer;
+  }
+  .availability-dot {
+    position: absolute;
+    z-index: 1;
+    top: 5px; /* Align with the icon vertically */
+    right: 25px; /* Position it next to the icon */
+    width: 8px; /* Dot width */
+    height: 8px; /* Dot height */
+    border-radius: 50%; /* Make it circular */
+    background-color: green; /* Color of the dot for available status */
+  }
+  /* Optional tooltip styling using the title attribute */
+  .info-icon:hover {
+      color: #38BDF8; /* Change color on hover */
+  }
+    .p-datatable .p-datatable-tbody > tr {
+      border-bottom: 2px solid #E5E7EB; /* Light gray color for the bottom border */
+    }
+    .p-datatable .p-datatable-tbody > tr:last-child {
+      border-bottom: none; /* Remove border for the last row if needed */
+    }
+    .p-datatable .p-datatable-tbody > tr:hover {
+      background-color: white; /* Light background color on hover */
+    }
+    .event-div:hover {
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.7); /* Glow effect */
+    }
+    .no-header .p-datatable-thead {
+      display: none !important; /* Hide the table header row */
+    }
+    .event-time {
+      font-weight: bold; /* Make the time bold */
+      color: #333; /* Customize the time color */
+      margin-right: 5px; /* Space between time and title */
+    }
+    .event-title {
+      color: #555; /* Customize the title color */
+    }
+    .event-div {
+      border-radius: 5px; /* Optional rounded corners */
+      background-color: white;
+    }
+    .event-table-container {
+      overflow-x: hidden !important; /* Prevent the overall table from scrolling */
+    }

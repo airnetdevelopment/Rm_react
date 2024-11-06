@@ -25,7 +25,7 @@ module.exports = {
         "quotes": ["error", "double"], // Enforce single quotes
         "semi": ["error", "always"], // Require semicolons
         "react/no-danger": "warn", // Avoid using dangerouslySetInnerHTML
-        "react/no-array-index-key": "warn", // Avoid using array index as key in lists
+        // "react/no-array-index-key": "warn", // Avoid using array index as key in lists
         "react/jsx-key": "error", // Ensure each JSX element in an array has a unique key
         "react-hooks/rules-of-hooks": "error", // Enforce rules of hooks
         "react-hooks/exhaustive-deps": "warn", // Warn if dependencies in useEffect/useCallback are not specified
