@@ -4,7 +4,7 @@ import { Tooltip } from "primereact/tooltip";
 import "primeicons/primeicons.css"; // Import PrimeIcons
 import "primereact/resources/themes/saga-blue/theme.css"; // Import PrimeReact theme
 import "primereact/resources/primereact.min.css"; // Import PrimeReact core styles
-import sedan from "../../assets/Iconslatestpackage/sedan-car-model.png";
+import sedan from "../../assets/Iconslatestpackage/icons/sedan-car-model.png";
 
 
 const Sightdata=[

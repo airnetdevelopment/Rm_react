@@ -6,17 +6,17 @@ import "primereact/resources/themes/saga-blue/theme.css";  // Choose your desire
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { Tooltip } from "primereact/tooltip";
-import nonrefundable from "../../assets/Iconslatestpackage/nonrefundable.png";
-import refundable from "../../assets/Iconslatestpackage/refundable.png";
-import notavailable from "../../assets/Iconslatestpackage/notavailable.png";
-import available from "../../assets/Iconslatestpackage/available.png";
-import coachclass from "../../assets/Iconslatestpackage/coach-class.png";
+import nonrefundable from "../../assets/Iconslatestpackage/icons/nonrefundable.png";
+import refundable from "../../assets/Iconslatestpackage/icons/refundable.png";
+import notavailable from "../../assets/Iconslatestpackage/icons/notavailable.png";
+import available from "../../assets/Iconslatestpackage/icons/available.png";
+import coachclass from "../../assets/Iconslatestpackage/icons/coach-class.png";
 import { Image } from "primereact/image";
-import group from "../../assets/Iconslatestpackage/group.png";
-import sedan from "../../assets/Iconslatestpackage/sedan-car-model.png";
-import timeleft from "../../assets/Iconslatestpackage/time-left.png";
-import seat from "../../assets/Iconslatestpackage/seat.png";
-import luggage from "../../assets/Iconslatestpackage/luggage.png";
+import group from "../../assets/Iconslatestpackage/icons/group.png";
+import sedan from "../../assets/Iconslatestpackage/icons/sedan-car-model.png";
+import timeleft from "../../assets/Iconslatestpackage/icons/time-left.png";
+import seat from "../../assets/Iconslatestpackage/icons/seat.png";
+import luggage from "../../assets/Iconslatestpackage/icons/luggage.png";
 
 
 const TransitCategoryWise = () => {
