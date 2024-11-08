@@ -1,7 +1,7 @@
 // TransitCard.jsx
 import React from "react";
 import { Card } from "primereact/card";
-import railway from "../../assets/railway.png";
+import railway from "../../../assets/Iconslatestpackage/railway.png";
 import { Button } from "primereact/button";
 // import railway from '../../assets/.png';
 
@@ -37,7 +37,7 @@ const extractTitle = (title) => {
     return parts.length > 1 ? parts[1] : title; // Return the part after the colon
 };
 
-const TransitCard = () => {
+const TransitCard = ({transitEvents}) => {
     
     return (
         <div className="ml-4 flex flex-wrap p-2 shadow-md mt-4 relative mr-4 w-[50rem]">

@@ -11,7 +11,6 @@ const CityEvents = ({cityEvents}) => {
 
     return (
         <>
-           
             <div className="text-indigo-900 font-semibold border-2 border-indigo-900 ml-5 mr-5 rounded-md w-[50rem]">
                 <div className="flex flex-row justify-between  bg-indigo-900 pl-3 pr-3 items-center">
                     <div className="text-white text-lg h-12 items-center font-bold">4 Nights in Milan</div>
@@ -32,27 +31,27 @@ const CityEvents = ({cityEvents}) => {
                     </div>
                 </div>
 
-                <table>
+                <table className="flex flex-col" >
                     {cityEvents && cityEvents.length>0 && cityEvents.map((day,idx)=>
                         (  
-                            <tr key={idx} >
-                                <td>
-                                    <div>
-                                        {day.date}
-                                    </div>
-                                </td>
-                                <td>
-                                    <EventsOnDate dayEvents={day.eventsOnDate} />
-                                </td>
-                            </tr>
+                            <div key={idx} className="" >
+                                <tr>
+                                    <td>
+                                        <div>
+                                            {day.date}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <EventsOnDate dayEvents={day.eventsOnDate} />
+                                    </td>
+                                </tr>
+                            </div>
+                           
                         )
                     )}
                 </table>
-
-            </div>;
+            </div>
         </>
-       
-      
     );
 };
   

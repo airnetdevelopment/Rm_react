@@ -66,9 +66,9 @@ const EventsOnDate = ({ dayEvents }) => {
         );
     };
 
-    useEffect(() => {
-        console.log(dayEvents);
-    }, [dayEvents]);
+    // useEffect(() => {
+    //     console.log(dayEvents);
+    // }, [dayEvents]);
     
 
     return (
