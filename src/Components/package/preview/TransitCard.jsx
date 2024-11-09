@@ -71,7 +71,7 @@ const TransitCard = ({transitEvents}) => {
                                 className="rounded-lg h-8 w-8"
                             />
                         </div>
-                        <div className="bg-white p-3 mt-5 h-32 text-[10px] text-left w-2/3 w-[24rem]">
+                        <div className="bg-white p-3 mt-5 h-28 text-[10px] text-left w-2/3 w-[24rem]">
                             <h3 className="text-xs font-bold mb-1">{extractTitle(event.title)}</h3>
                             <p>
                                 {formatDate(event.start)} - {formatDate(event.end)}
@@ -82,9 +82,9 @@ const TransitCard = ({transitEvents}) => {
                 ))}
 
             </div>
-            <div className='mt-1 mb-1'>
+            {/* <div className='mt-1 mb-1'>
                 <Button className='bg-red-400 p-1 text-sm text-white w-24 rounded-md absolute bottom-1 right-1'>Show Details</Button>
-            </div>
+            </div> */}
         </div>
     );
 };

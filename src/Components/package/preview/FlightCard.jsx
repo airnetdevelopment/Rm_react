@@ -871,7 +871,7 @@ const FlightCard = ({flightEvents}) => {
     return (
         <>
             {flightDetails && (
-                <div className="mt-[-20px] mb-3 ml-4 shadow-md event-div p-4 m-2 bg-white border border-gray-300 h-24 w-[50rem]">
+                <div className="mt-[-20px] mb-3 ml-4 shadow-md bg-white border border-gray-300 h-24 w-[50rem]">
             
                     <div className="p-4">
                         <div className='flex flex-row'>
@@ -895,26 +895,28 @@ const FlightCard = ({flightEvents}) => {
                             
                                 
                             )) }   */}
+
                             {flightDetails?.airlines.length > 0 && (
                                 <div className="flex items-center">
                                     {flightDetails.airlines.slice(0, 2).map((a, idx) => (
-                                        <div className="flex flex-col mr-12" key={idx}>
+                                        <div className="flex flex-col ml-12 mr-12" key={idx}>
                                             <div className="text-[16px] text-black font-bold">{a.name}</div>
                                             <div className="text-[14px] text-black">{a.flightNumber}</div>
                                         </div>
                                     ))}
 
+
                                     {/* Tooltip for additional airlines */}
                                     {flightDetails.airlines.length > 2 && (
                                         <div className="relative group">
                                             <div className="ml-5 text-blue-500 text-sm font-bold cursor-pointer">
-                    +{flightDetails.airlines.length - 2} more
+                                            +{flightDetails.airlines.length - 2} more
                                             </div>
                                             <div className="absolute hidden group-hover:block p-2 w-[16rem] bg-indigo-900 rounded shadow-lg text-[12px] text-white z-10 top-full mt-1">
                                                 {flightDetails.airlines.slice(2).map((a, idx) => (
                                                     <div key={idx} className="mb-2">
-                                                        <div className="text-[14px] font-bold">{a.name}</div>
-                                                        <div className="text-[12px]">{a.flightNumber}</div>
+                                                        <div className="text-[11px] font-bold">{a.name}</div>
+                                                        <div className="text-[10px]">{a.flightNumber}</div>
                                                     </div>
                                                 ))}
                                             </div>
@@ -984,10 +986,9 @@ const FlightCard = ({flightEvents}) => {
                                     </div>
                                 </div>
                             )}
-                            <div className='mb-2 ml-6 mr-6 mt-2 text-sm  text-indigo-900 font-bold'>{layovers.city} </div>
 
                             {flightDetails?.destination && (
-                                <div className='flex flex-col items-center ml-4'>
+                                <div className='flex flex-col items-center ml-10 mr-10'>
                                     <div className='text-sm font-bold underline'>{ flightDetails.destination.city}</div>
                                     <div className='text-sm'>{flightDetails.destination.date}</div>
                                     <div className='text-sm'>{flightDetails.destination.arrivalTime}</div>
@@ -995,8 +996,8 @@ const FlightCard = ({flightEvents}) => {
                             )}
                   
 
-                            <div className='flex flex-row items-center justify-between ml-12'>
-                                <div className='h-5 w-5 mr-10 ml-5'><img src={pencil} alt="" /></div>
+                            <div className='flex flex-row items-center justify-between ml-10'>
+                                <div className='h-5 w-5 mr-12'><img src={pencil} alt="" /></div>
                                 <div className='h-5 w-5'><img src={unchecked} alt="" /></div>
                             </div>
 

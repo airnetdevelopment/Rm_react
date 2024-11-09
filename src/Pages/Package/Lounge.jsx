@@ -34,7 +34,7 @@ const Lounge =()=>{
 
     return(
 
-        <div className="shadow-md event-div p-2 m-1 rounded">
+        <div className="shadow-md w-[14rem] h-[6rem] text-[11px] items-center justify-center text-center flex p-2 m-1 rounded">
             {/* {title}Leisure */}
             <div className='flex flex-col text-center'>
                 <div className='font-bold underline'> {startTime}-{endTime} </div>

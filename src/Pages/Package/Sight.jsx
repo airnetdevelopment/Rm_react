@@ -1,9 +1,6 @@
 import React from "react";
 import { Card } from "primereact/card";
 import { Tooltip } from "primereact/tooltip";
-import "primeicons/primeicons.css"; // Import PrimeIcons
-import "primereact/resources/themes/saga-blue/theme.css"; // Import PrimeReact theme
-import "primereact/resources/primereact.min.css"; // Import PrimeReact core styles
 import sedan from "../../assets/Iconslatestpackage/icons/sedan-car-model.png";
 
 
@@ -40,9 +37,7 @@ const endTime = new Date(SightData.end).toLocaleTimeString([], {
 const Sight = () => {
     return (
 
-        <div className="shadow-md event-div p-2 m-1 rounded flex">
-      
-      
+        <div className="shadow-md w-[14rem] h-[6rem] text-[11px] items-center justify-center text-center flex p-2 m-1 rounded">
             {/* Event Details */}
             <div className='flex flex-col text-center flex-grow'>
                 <div className='font-bold underline'>{startTime}-{endTime}</div>

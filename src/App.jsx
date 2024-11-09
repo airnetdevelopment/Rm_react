@@ -7,6 +7,7 @@ import Package from "./Pages/Package/Package";
 import HotelsCategoryWise from "./Pages/Package/HotelCategoryWise";
 import SightseeingCategoryWise from "./Pages/Package/SIghtseeingCategoryWise";
 import FlightCategoryWise from "./Pages/Package/FlightCategoryWise";
+import Lounge from "./Pages/Package/Lounge";
 
 function App() {
     return (
@@ -22,9 +23,7 @@ function App() {
             <Route path='/sightseeing-category' element={ <SightseeingCategoryWise/> }  />
             <Route path='/hotel-category' element={ <HotelsCategoryWise/> }  />
             <Route path='/flight-category' element={ <FlightCategoryWise/> }  />
-
-
-
+            <Route path='/lounge' element={ <Lounge/> }  />
 
         </Routes>
     

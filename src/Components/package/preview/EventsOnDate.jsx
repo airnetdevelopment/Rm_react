@@ -1,10 +1,6 @@
 import React, { useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import "primereact/resources/themes/saga-blue/theme.css"; // Theme
-import "primereact/resources/primereact.min.css"; // Core CSS
-import "primeicons/primeicons.css"; // Icons
-import "../../../css/EventTable.css";
 import Lounge from "../../../Pages/Package/Lounge";
 import Leisure from "../../../Pages/Package/Leisure";
 import Commute from "../../../Pages/Package/Commute";
@@ -57,7 +53,7 @@ const EventsOnDate = ({ dayEvents }) => {
             <div className='flex overflow-x-auto w-[44rem]'>
                 {eventsOnDate.map((event, index) => (
             
-                    <div key={index} className="event-div">
+                    <div key={index}>
                         {renderEventComponent(event)} {/* Render event components */}
                     </div>
             
@@ -72,7 +68,7 @@ const EventsOnDate = ({ dayEvents }) => {
     
 
     return (
-        <div className='event-table-container'>
+        <div>
             { eventTemplate(dayEvents)  }
         </div>
     );

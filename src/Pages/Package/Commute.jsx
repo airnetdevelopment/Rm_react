@@ -1,9 +1,6 @@
 import React from "react";
 import { Card } from "primereact/card";
 import { Tooltip } from "primereact/tooltip";
-import "primeicons/primeicons.css"; // Import PrimeIcons
-import "primereact/resources/themes/saga-blue/theme.css"; // Import PrimeReact theme
-import "primereact/resources/primereact.min.css"; // Import PrimeReact core styles
 import sedan from "../../assets/Iconslatestpackage/icons/sedan-car-model.png";
 
 
@@ -39,7 +36,7 @@ const endTime = new Date(CommuteData.end).toLocaleTimeString([], {
 const Commute = () => {
     return (
 
-        <div className="shadow-md event-div p-2 m-1 rounded flex">
+        <div className="shadow-md w-[14rem] h-[6rem] text-[11px] items-center justify-center text-center flex p-2 m-1 rounded">
             {/* Logo Image */}
             <div className="flex-shrink-0 mr-2">
                 <img src={sedan} alt="Logo" className="w-12 h-12" /> {/* Adjust width and height as needed */}
