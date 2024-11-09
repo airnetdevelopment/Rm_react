@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import LineImage from "../../../assets/Iconslatestpackage/icons/Line 2.png";
 import pencil from "../../../assets/Iconslatestpackage/icons/pencil.png";
 import unchecked from "../../../assets/Iconslatestpackage/icons/unchecked.png";
@@ -774,7 +774,7 @@ const FlightCard = ({flightEvents}) => {
     return (
         <>
             {flightDetails && (
-                <div className="mt-[-20px] mb-3 ml-4 shadow-md event-div p-4 m-2 bg-white border border-gray-300 h-24 w-[50rem]">
+                <div className="mt-[-20px] mb-3 ml-4 shadow-md  p-4 m-2 bg-white border border-gray-300 h-24 w-[50rem]">
             
                     <div className="p-4">
                         <div className='flex flex-row'>

@@ -1,6 +1,4 @@
 // TransitCard.jsx
-import React from "react";
-import { Card } from "primereact/card";
 import railway from "../../../assets/Iconslatestpackage/railway.png";
 import { Button } from "primereact/button";
 // import railway from '../../assets/.png';
@@ -50,7 +48,7 @@ const TransitCard = ({transitEvents}) => {
                             className="rounded-lg h-12 w-16"
                         />
                     </div>
-                    <div className="bg-white p-4 h-28 text-xs text-left w-2/3 w-[28rem]">
+                    <div className="bg-white p-4 h-28 text-xs text-left  w-[28rem]">
                         <h3 className="text-xs font-bold mb-1">{extractTitle(event.title)}</h3>
                         <p>
                             {formatDate(event.start)} - {formatDate(event.end)}

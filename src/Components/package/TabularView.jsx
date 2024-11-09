@@ -3,6 +3,7 @@ import CityEvents from "./preview/CityEvents";
 import TransitCard from "./preview/TransitCard";
 import FlightCard from "./preview/FlightCard";
 import { events } from "../../Pages/Package/PackageArray";
+import BothCard from "./preview/BothCard";
 
 const TabularView = () => {
 
@@ -22,7 +23,7 @@ const TabularView = () => {
                     ) : e.eventType === "interCity" && e.commuteType === "transitOnly" ?(
                         <TransitCard  transitEvents={e.events} />
                     ) : e.eventType === "interCity" && e.commuteType === "both" ?(
-                        <TransitCard  mixEvents={e.events} />
+                        <BothCard  mixEvents={e.events} />
                     ) : (
                         <CityEvents key={index} cityEvents={e.events}  />
                     )}
