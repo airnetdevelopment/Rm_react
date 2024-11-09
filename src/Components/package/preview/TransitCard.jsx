@@ -1,4 +1,5 @@
 // TransitCard.jsx
+import { useEffect } from "react";
 import railway from "../../../assets/Iconslatestpackage/railway.png";
 import { Button } from "primereact/button";
 // import railway from '../../assets/.png';
@@ -53,6 +54,11 @@ const extractTitle = (title) => {
 
 const TransitCard = ({transitEvents}) => {
     
+    useEffect(() => {
+        console.log(transitEvents);
+    }, [transitEvents]);
+    
+
     return (
         <>
             <div className="ml-4 flex flex-wrap shadow-md relative mr-4 w-[50rem]">
@@ -78,13 +84,6 @@ const TransitCard = ({transitEvents}) => {
                                     </p>
                                     <p>{event.description}</p>
                                 </div>
-                            </div>
-                            <div className="bg-white p-4 h-28 text-xs text-left  w-[28rem]">
-                                <h3 className="text-xs font-bold mb-1">{extractTitle(event.title)}</h3>
-                                <p>
-                                    {formatDate(event.start)} - {formatDate(event.end)}
-                                </p>
-                                <p>{event.description}</p>
                             </div>
                         </>
                     ))}

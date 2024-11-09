@@ -16,6 +16,15 @@ import { useNavigate } from "react-router-dom";
 import TabularPackage from "../../Components/package/TabularView";
 
 
+const tabs = [
+    { id: "trips", label: "Trips" },
+    { id: "inclusions", label: "Inclusions" },
+    { id: "flights", label: "Flights" },
+    { id: "hotels", label: "Hotels" },
+    { id: "sights", label: "Sights" },
+    { id: "transits", label: "Transits" },
+];
+
 const Package = () => {
 
     const routeSelection =  useSelector(state=>state.routeSelection);
@@ -62,16 +71,6 @@ const Package = () => {
         sections[section].current.scrollIntoView({ behavior: "smooth" });
     };
     
-    const tabs = [
-        { id: "trips", label: "Trips" },
-        { id: "inclusions", label: "Inclusions" },
-        { id: "flights", label: "Flights" },
-        { id: "hotels", label: "Hotels" },
-        { id: "sights", label: "Sights" },
-        { id: "transits", label: "Transits" },
-    ];
-
-      
     const getNewPackage = async(routeId)=>{
         try{
             const data = await dispatch(createNewPackageThunk(routeId)).unwrap();
@@ -89,8 +88,6 @@ const Package = () => {
             setLoadingFullPage(false);
         }
     };
-
-
     
     if(loadingFullPage){
         return (
@@ -117,9 +114,7 @@ const Package = () => {
                 {/* left section */}
                 <div className='w-[70%]'>
                     <div className="w-full flex flex-col items-start gap-6 " > 
-
                         <h1 className='text-indigo-900 font-bold text-2xl underline text-left'>10 nights to Cape Town, Mossel Bay, Milan </h1>
-          
                         <div className="w-full flex flex-col gap-10 ">
                             {/* Tabs */}
                             <div className="flex overflow-auto border-b border-gray-300 mb-4">
@@ -168,7 +163,6 @@ const Package = () => {
                                 </section>
                             </div>
                         </div>
-
                     </div>
                 </div>
 

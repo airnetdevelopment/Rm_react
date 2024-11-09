@@ -871,10 +871,10 @@ const FlightCard = ({flightEvents}) => {
     return (
         <>
             {flightDetails && (
-                <div className="mt-[-20px] mb-3 ml-4 shadow-md  p-4 m-2 bg-white border border-gray-300 h-24 w-[50rem]">
+                <div className="shadow-md bg-white border border-gray-300 h-24 w-[50rem]">
             
                     <div className="p-4">
-                        <div className='flex flex-row'>
+                        <div className='flex flex-row items-center justify-center'>
 
                             {/* {flightDetails?.airlines.length>0 && flightDetails.airlines.slice(0,2).map((a,idx)=>(
                                 <div className="flex">
