@@ -1,15 +1,16 @@
-import React from "react";
+import React,{useState} from "react";
 import { Card } from "primereact/card";
 import { Divider } from "primereact/divider";
 import { Image } from "primereact/image";
-import nonrefundable from "../../assets/Iconslatestpackage/nonrefundable.png";
-import refundable from "../../assets/Iconslatestpackage/refundable.png";
-import notavailable from "../../assets/Iconslatestpackage/notavailable.png";
-import available from "../../assets/Iconslatestpackage/available.png";
-import coachclass from "../../assets/Iconslatestpackage/coach-class.png";
-
-
-// import non-refundable from '../../assets/Iconslatestpackage/non-refundable.png';
+import nonrefundable from "../../assets/Iconslatestpackage/icons/nonrefundable.png";
+import refundable from "../../assets/Iconslatestpackage/icons/refundable.png";
+import notavailable from "../../assets/Iconslatestpackage/icons/notavailable.png";
+import available from "../../assets/Iconslatestpackage/icons/available.png";
+import coachclass from "../../assets/Iconslatestpackage/icons/coach-class.png";
+import { Dialog } from "primereact/dialog";
+import { Tooltip } from "primereact/tooltip";
+import { Button } from "primereact/button";
+import FlightAlternatives from "./FlightAlternatives";
 
 const FlightCategoryWise = () => {
     const flights = [
@@ -94,6 +95,8 @@ const FlightCategoryWise = () => {
             baggageInfo: "The check-in baggage for flight is 0 Kgs. Check-in baggage will have to be purchased at an additional cost."
         }
     ];
+    const [flightvisible, setFlightVisible] = useState(false);
+
 
     return (
         <div className="w-[50rem] mb-6 bg-white rounded-lg mt-4">
@@ -116,6 +119,27 @@ const FlightCategoryWise = () => {
                                         <div className="text-lg font-bold">{segment.segmentRoute}</div>
                                         <div className="text-black text-sm">{segment.segmentDate}</div>
                                     </div>
+                                    <div className="flex items-center space-x-4">
+                                        <Tooltip target=".info-button" content="More Info" className='text-xs' />
+                                        <Button label="i" className="info-button text-gray-500 border border-black h-8 w-6" />
+                                        <Tooltip target=".change-button" content="Change Hotel" className='text-xs' />
+                                        <Button label="Change" onClick={()=>setFlightVisible(true)} className="change-button text-gray-500 border border-black h-8 w-16" />
+                                    </div>
+              
+                                    {/* Dialog Component */}
+                                    <Dialog
+                                        header={null} 
+                                        visible={flightvisible} 
+                                        style={{ width: "60vw" }}
+                                        onHide={() => setFlightVisible(false)} 
+                                        draggable={false}
+                                        resizable={false}
+                                        className="transition-all duration-500 ease-in-out transform"
+                                    >
+                                        <div>
+                                            <FlightAlternatives/>
+                                        </div>
+                                    </Dialog>
                                 </div>
 
                                 <div className="flex items-center space-x-4 relative">

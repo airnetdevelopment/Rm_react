@@ -1,56 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "primereact/button";
 import { Tooltip } from "primereact/tooltip";
-import nonrefundable from "../../assets/Iconslatestpackage/nonrefundable.png";
-import refundable from "../../assets/Iconslatestpackage/refundable.png";
-import notavailable from "../../assets/Iconslatestpackage/notavailable.png";
-import available from "../../assets/Iconslatestpackage/available.png";
-import coachclass from "../../assets/Iconslatestpackage/coach-class.png";
+import nonrefundable from "../../assets/Iconslatestpackage/icons/nonrefundable.png";
+import refundable from "../../assets/Iconslatestpackage/icons/refundable.png";
+import notavailable from "../../assets/Iconslatestpackage/icons/notavailable.png";
+import available from "../../assets/Iconslatestpackage/icons/available.png";
+import coachclass from "../../assets/Iconslatestpackage/icons/coach-class.png";
 import { Image } from "primereact/image";
-import group from "../../assets/Iconslatestpackage/group.png";
+import group from "../../assets/Iconslatestpackage/icons/group.png";
+import { Dialog } from "primereact/dialog";
+import HotelAlternatives from "./HotelAlternatives";
 
 const HotelsCategoryWise = () => {
-    // const [isHotelAvailable, setIsHotelAvailable] = useState(true);
-    // const [cityItineraryDetails, setCityItineraryDetails] = useState({
-    // cityEvents: [],
-    // hotel: {},
-    // });
+   
     const [hotelId, setHotelId] = useState("");
-
-    // useEffect(() => {
-    //     if (eventUid) {
-    //         setCityItineraryDetails(eventUid);
-    //     }
-    // }, [eventUid]);
-
-    // const setCityItineraryDetails = (uid) => {
-    //     // Assuming cityItineraryService is available
-    //     cityItineraryService.getCityItineraryDetails(uid)
-    //         .then((data) => {
-    //             setCityItineraryDetails(data);
-    //             setHotelId(data?.hotel?.event?.id);
-    //         })
-    //         .catch((err) => {
-    //             console.error('Error fetching transit details', err);
-    //         });
-    // };
-
-    // const toggleAvailability = () => {
-    //     setIsHotelAvailable((prev) => !prev);
-    // };
-
-    // const getHotelName = () => {
-    //     return cityItineraryDetails.hotel.hotelDetails?.detail?.hotel_name || 'unknown';
-    // };
-
-    // const getNumberOfNights = () => {
-    //     const numberOfNights = cityItineraryDetails.cityEvents.length;
-    //     return numberOfNights > 1 ? `${numberOfNights} Nights` : `${numberOfNights} Night`;
-    // };
-
-    // const getCityName = () => {
-    //     return cityItineraryDetails.hotel.hotelDetails?.detail?.city_name || 'unknown';
-    // };
+    const [hotelvisible, setHotelVisible] = useState(false);
 
     return (
         <div className="w-[50rem] mb-6 bg-white rounded-lg">
@@ -69,8 +33,22 @@ const HotelsCategoryWise = () => {
                         <Tooltip target=".info-button" content="More Info" />
                         <Button label="i" className="info-button text-gray-500 border border-black h-8 w-6" />
                         <Tooltip target=".change-button" content="Change Hotel" />
-                        <Button label="Change" className="change-button text-gray-500 border border-black h-8 w-16" />
+                        <Button label="Change" onClick={()=>setHotelVisible(true)} className="change-button text-gray-500 border border-black h-8 w-16" />
                     </div>
+                    {/* Dialog Component */}
+                    <Dialog
+                        header={null} 
+                        visible={hotelvisible} 
+                        style={{ width: "60vw" }}
+                        onHide={() => setHotelVisible(false)} 
+                        draggable={false}
+                        resizable={false}
+                        className="transition-all duration-500 ease-in-out transform"
+                    >
+                        <div>
+                            <HotelAlternatives/>
+                        </div>
+                    </Dialog>
                 </div>
 
                 <div className="flex p-4 relative">

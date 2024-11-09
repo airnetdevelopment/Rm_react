@@ -1,20 +1,24 @@
 
-import React from "react";
+import React,{useState} from "react";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/saga-blue/theme.css"; // Adjust theme as needed
 import "primereact/resources/primereact.min.css";
 import { Tooltip } from "primereact/tooltip";
-import nonrefundable from "../../assets/Iconslatestpackage/nonrefundable.png";
-import refundable from "../../assets/Iconslatestpackage/refundable.png";
-import notavailable from "../../assets/Iconslatestpackage/notavailable.png";
-import available from "../../assets/Iconslatestpackage/available.png";
+import nonrefundable from "../../assets/Iconslatestpackage/icons/nonrefundable.png";
+import refundable from "../../assets/Iconslatestpackage/icons/refundable.png";
+import notavailable from "../../assets/Iconslatestpackage/icons/notavailable.png";
+import available from "../../assets/Iconslatestpackage/icons/available.png";
 import { Image } from "primereact/image";
-import timeleft from "../../assets/Iconslatestpackage/time-left.png";
-import binocular from "../../assets/Iconslatestpackage/binocular.png";
+import timeleft from "../../assets/Iconslatestpackage/icons/time-left.png";
+import binocular from "../../assets/Iconslatestpackage/icons/binocular.png";
+import { Dialog } from "primereact/dialog";
+import SightSeeingAlternatives from "./SightSeeingAlternatives";
 
 const SightseeingCategoryWise = () => {
+    const [sightvisible, setSightVisible] = useState(false);
+
     return (
         <div className="w-[50rem] mb-6 bg-white rounded-lg">
             <h3 className="text-lg font-bold text-black text-left mb-4">SIGHTSEEINGS</h3>
@@ -29,11 +33,26 @@ const SightseeingCategoryWise = () => {
                         </div>
                     </div>
                     <div className="flex items-center space-x-4">
-                        <Tooltip target=".info-button" content="More Info" />
+                        <Tooltip target=".info-button" content="More Info" className='text-xs' />
                         <Button label="i" className="info-button text-gray-500 border border-black h-8 w-6" />
-                        <Tooltip target=".change-button" content="Change Hotel" />
-                        <Button label="Change" className="change-button text-gray-500 border border-black h-8 w-16" />
+                        <Tooltip target=".change-button" content="Change Hotel" className='text-xs' />
+                        <Button label="Change" onClick={()=>setSightVisible(true)} className="change-button text-gray-500 border border-black h-8 w-16" />
                     </div>
+              
+                    {/* Dialog Component */}
+                    <Dialog
+                        header={null} 
+                        visible={sightvisible} 
+                        style={{ width: "60vw" }}
+                        onHide={() => setSightVisible(false)} 
+                        draggable={false}
+                        resizable={false}
+                        className="transition-all duration-500 ease-in-out transform"
+                    >
+                        <div>
+                            <SightSeeingAlternatives/>
+                        </div>
+                    </Dialog>
                 </div>
 
                 <div className="flex p-4 relative">

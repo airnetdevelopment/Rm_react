@@ -48,7 +48,7 @@ const EventsOnDate = ({ dayEvents }) => {
     // Template to render events in separate divs in the same row
     const eventTemplate = (eventsOnDate) => {
         return (
-            <div className='flex overflow-x-auto w-[49rem]'>
+            <div className='flex overflow-x-auto w-[44rem]'>
                 {eventsOnDate.map((event, index) => (
                     <div key={index} className="event-div">
                         {renderEventComponent(event)} {/* Render event components */}

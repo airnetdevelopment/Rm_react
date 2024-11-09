@@ -3,6 +3,14 @@ import LineImage from "../../../assets/Iconslatestpackage/icons/Line 2.png";
 import pencil from "../../../assets/Iconslatestpackage/icons/pencil.png";
 import unchecked from "../../../assets/Iconslatestpackage/icons/unchecked.png";
 import { formatDuration } from "../../../utils/formatDuration";
+// import flightStop4 from "../../assets/Iconslatestpackage/icons/flightStop4.png";
+// import flightStop3 from "../../assets/Iconslatestpackage/icons/flightStop3.png";
+// import flightStop2 from "../../assets/Iconslatestpackage/icons/flightStop2.png";
+// import flightStop1 from "../../assets/Iconslatestpackage/icons/flightStop1.png";
+// import nonStopFlight from "../../assets/Iconslatestpackage/icons/nonStopFlight.png";
+import flightStop1 from "../../../assets/Iconslatestpackage/icons/flightStop1.png";
+
+import { Tooltip } from "primereact/tooltip";
 
 
 const dummy= [
@@ -761,14 +769,103 @@ const convertFlightData = (events) => {
     return flightDetails;
 };
 
+// tooltip for layovers
+const layovers = [
+    {
+        city: "Chicago(CHI)",
+        duration: 120,  // in minutes
+        arrivalTime: "2024-11-09T22:00:00", 
+        departureTime: "2024-11-09T00:00:00", 
+        planeChange: "Yes",
+        terminalChange: "No",
+        airportChange: "No"
+    },
+    {
+        city: "Denver(DEN)",
+        duration: 180,  // in minutes
+        arrivalTime: "2024-11-10T04:00:00",
+        departureTime: "2024-11-10T07:00:00",
+        planeChange: "No",
+        terminalChange: "Yes",
+        airportChange: "No"
+    },
+    {
+        city: "Dallas(DAL)",
+        duration: 90,  // in minutes
+        arrivalTime: "2024-11-10T09:30:00",
+        departureTime: "2024-11-10T11:00:00",
+        planeChange: "No",
+        terminalChange: "No",
+        airportChange: "Yes"
+    }
+];
+  
+
+
 const FlightCard = ({flightEvents}) => {
 
-    const [flightDetails,setFlightDetails] = useState(null);
+    const [flightDetails,setFlightDetails] = useState(null);    
+    const [currentIndex1, setCurrentIndex1] = useState(0); 
+    const [isTooltipVisible, setTooltipVisible] = useState(false);
+
 
     useEffect(() => {
         const flight = convertFlightData(dummy);
+        console.log(flight);
         setFlightDetails(flight);
     }, [flightEvents]);
+
+    // Count the number of layovers
+    // flightDetails.layoverCount = flightDetails.layover.length;
+    // console.log(flightDetails.layover);
+
+    // Function to determine the image based on the number of layovers
+    // const getFlightImage = () => {
+    //     if ( flightDetails.layoverCount=== 0) {
+    //     // return nonStopFlight; 
+    //     } else if (flightDetails.layoverCount === 1) {
+    //         return flightStop1; 
+    //     } else if  (flightDetails.layoverCount === 2) {
+    //     // return flightStop2; 
+    //     } else if  (flightDetails.layoverCount === 3) {
+    //     // return flightStop3; 
+    //     } else if  (flightDetails.layoverCount === 4) {
+    //     // return flightStop4; 
+    //     }
+    // };
+
+    // const getFlightText = () => {
+    //     if (flightDetails.layoverCount === 0) {
+    //         return "Non-stop flight";
+    //     } else if (flightDetails.layoverCount === 1) {
+    //         return "1 stop";
+    //     } else {
+    //         return `${flightDetails.layoverCount} stops`;
+    //     }
+    // };
+
+    // const goToNext1 = () => {
+    //     if (currentIndex1 < flightDetails.layoverCount - 1) {
+    //         setCurrentIndex1(currentIndex1 + 1);
+    //     } else {
+    //         setCurrentIndex1(0);
+    //     }
+    // };
+    // const goToPrevious1 = () => {
+    //     if (currentIndex1 > 0) {
+    //         setCurrentIndex1(currentIndex1 - 1);
+    //     } else {
+    //         setCurrentIndex1(flightDetails.layoverCount - 1); 
+    //     }
+    // };
+    // const handleMouseEnter = () => {
+    //     setTooltipVisible(true);
+    // };
+    // const handleMouseLeave = () => {
+    //     setTimeout(() => {
+    //         setTooltipVisible(false);
+    //     }, 5000);
+    // };
     
 
     return (
@@ -779,15 +876,56 @@ const FlightCard = ({flightEvents}) => {
                     <div className="p-4">
                         <div className='flex flex-row'>
 
-                            {flightDetails?.airlines.length>0 && flightDetails.airlines.map((a,idx)=>(
-                                <div className='flex flex-col mr-7' key={idx} >
-                                    <div className='text-lg text-black font-bold'>{a.name}</div>
-                                    <div className='text-lg text-indigo-900'>{a.flightNumber}</div>
+                            {/* {flightDetails?.airlines.length>0 && flightDetails.airlines.slice(0,2).map((a,idx)=>(
+                                <div className="flex">
+                                    <div className='flex flex-col mr-12' >
+
+                                        <div className='text-[16px] text-black font-bold'>{a.name}</div>
+                                        <div className='text-[14px] text-black'>{a.flightNumber}</div>
+                                    </div>
+                                    <div className='flex flex-col mr-12'  >
+                                        <div className='text-[16px] text-black font-bold'>Vistara</div>
+                                        <div className='text-[14px] text-black'>{a.flightNumber}7896P</div>
+                                    </div>
+                                    <div className='flex flex-col mr-12'  >
+                                        <div className='text-[16px] text-black font-bold'>Indigo</div>
+                                        <div className='text-[14px] text-black'>784TUU</div>
+                                    </div>
                                 </div>
-                            )) }   
+                            
+                                
+                            )) }   */}
+                            {flightDetails?.airlines.length > 0 && (
+                                <div className="flex items-center">
+                                    {flightDetails.airlines.slice(0, 2).map((a, idx) => (
+                                        <div className="flex flex-col mr-12" key={idx}>
+                                            <div className="text-[16px] text-black font-bold">{a.name}</div>
+                                            <div className="text-[14px] text-black">{a.flightNumber}</div>
+                                        </div>
+                                    ))}
+
+                                    {/* Tooltip for additional airlines */}
+                                    {flightDetails.airlines.length > 2 && (
+                                        <div className="relative group">
+                                            <div className="ml-5 text-blue-500 text-sm font-bold cursor-pointer">
+                    +{flightDetails.airlines.length - 2} more
+                                            </div>
+                                            <div className="absolute hidden group-hover:block p-2 w-[16rem] bg-indigo-900 rounded shadow-lg text-[12px] text-white z-10 top-full mt-1">
+                                                {flightDetails.airlines.slice(2).map((a, idx) => (
+                                                    <div key={idx} className="mb-2">
+                                                        <div className="text-[14px] font-bold">{a.name}</div>
+                                                        <div className="text-[12px]">{a.flightNumber}</div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+ 
 
                             {flightDetails?.departure && (
-                                <div className='flex flex-col items-center ml-4'>
+                                <div className='flex flex-col items-center ml-10 mr-10'>
                                     <div className='text-sm font-bold underline'>{ flightDetails.departure.city}</div>
                                     <div className='text-sm'>{flightDetails.departure.date}</div>
                                     <div className='text-sm'>{flightDetails.departure.departureTime}</div>
@@ -797,14 +935,56 @@ const FlightCard = ({flightEvents}) => {
 
                             {flightDetails.totalDuration && (
                                 <div className='flex flex-col items-center'>
-                                    <div className='mb-2 ml-5 mr-5 mt-2'>{flightDetails.totalDuration} </div>
-                                    <div className='w-16 h-3 ml-5 mr-5'>
-                                        {/* <img src={getFlightImage(CommuteData.stopType)}   alt="Flight Type" className="w-12 h-12" />  */}
-                                        <img src={LineImage} alt="Line" />
+                                    <div className='mb-2 ml-6 mr-6 mt-2 text-sm font-bold'>{flightDetails.totalDuration} </div>
+                                    
+                                    <div className="w-16 h-5 ml-5 mr-5 relative"
+                                        // onMouseEnter={handleMouseEnter}  // Show tooltip when hovering over the parent div
+                                        // onMouseLeave={handleMouseLeave} // Hide tooltip when the mouse leaves the parent div
+                                    >
+                                        {/* Image */}
+                                        <img
+                                            // src={getFlightImage()} alt="Flight stop status"
+                                            className="w-28 h-3 ml-3"
+                                        />
+                                        {/* <span className="ml-5 text-xs text-blue-500 font-bold">{getFlightText()}</span> */}
+
+                                        {/* Tooltip */}
+                                        {/* {isTooltipVisible && flightDetails.layoverCount > 0 && (
+                                            <div className="p-2 w-[16rem] absolute top-[-55px] left-[-75px] bg-indigo-900 rounded shadow-lg text-[10px] text-white z-10">
+                                                <div className="flex justify-between items-center">
+                                                    <button onClick={goToPrevious1} className="text-white text-xs">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-left" viewBox="0 0 16 16">
+                                                            <path d="M11.854 1.146a.5.5 0 0 1 0 .708L5.707 8l6.147 6.146a.5.5 0 0 1-.708.708l-6.5-6.5a.5.5 0 0 1 0-.708l6.5-6.5a.5.5 0 0 1 .708 0z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <div className="text-xs"> 
+                                                        {layovers[currentIndex1].planeChange === "Yes" && (
+                                                            <div className="text-[11px]">Plane Change</div>
+                                                        )}
+                                                        {layovers[currentIndex1].terminalChange === "Yes" && (
+                                                            <div className="text-[11px]">Terminal Change</div>
+                                                        )}
+                                                        {layovers[currentIndex1].airportChange === "Yes" && (
+                                                            <div className="text-[11px]">Airport Change</div>
+                                                        )}
+
+                                                        <div className='flex'>
+                                                            <div className='mt-1 mr-1'> {layovers[currentIndex1].city } </div>
+                                                            <div className='mt-1'> | {layovers[currentIndex1].duration}min Layover </div>
+                                                        </div>
+                                                    </div>               
+                                                    <button onClick={goToNext1} className="text-white text-xs">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                            <path d="M4.146 1.146a.5.5 0 0 0 0 .708L10.293 8l-6.147 6.146a.5.5 0 0 0 .708.708l6.5-6.5a.5.5 0 0 0 0-.708l-6.5-6.5a.5.5 0 0 0-.708 0z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        )} */}
                                     </div>
                                 </div>
                             )}
-                         
+                            <div className='mb-2 ml-6 mr-6 mt-2 text-sm  text-indigo-900 font-bold'>{layovers.city} </div>
 
                             {flightDetails?.destination && (
                                 <div className='flex flex-col items-center ml-4'>
@@ -815,9 +995,9 @@ const FlightCard = ({flightEvents}) => {
                             )}
                   
 
-                            <div className='flex flex-row items-center justify-between mr-3'>
-                                <div className='h-5 w-5 mr-5 ml-5'><img src={pencil} alt="" /></div>
-                                <div className='h-5 w-5 ml-5'><img src={unchecked} alt="" /></div>
+                            <div className='flex flex-row items-center justify-between ml-12'>
+                                <div className='h-5 w-5 mr-10 ml-5'><img src={pencil} alt="" /></div>
+                                <div className='h-5 w-5'><img src={unchecked} alt="" /></div>
                             </div>
 
                         </div>
