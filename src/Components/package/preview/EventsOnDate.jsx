@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
 import Lounge from "../../../Pages/Package/Lounge";
 import Leisure from "../../../Pages/Package/Leisure";
 import Commute from "../../../Pages/Package/Commute";
 import Sight from "../../../Pages/Package/Sight";
+import "primereact/resources/themes/saga-blue/theme.css"; // Theme
+import "primereact/resources/primereact.min.css"; // Core CSS
+import "primeicons/primeicons.css"; // Icons
+import "../../../css/EventTable.css";
+
 
 
 const EventsOnDate = ({ dayEvents }) => {
-
 
     // Check functions for event types
     const isCommuteEvent = (event) => {
@@ -26,22 +28,20 @@ const EventsOnDate = ({ dayEvents }) => {
         return event.type === "return-lounge" || event.type === "incoming-lounge";
     };
 
-
     const isSightEvent = (event) => {
         return event.type === "sight";
     };
-
  
     // Render components dynamically based on event type
     const renderEventComponent = (event) => {
         if (isCommuteEvent(event)) {
-            return <Commute title={event.title} />;
+            return <Commute event={event} />;
         } else if (isLoungeEvent(event)) {
-            return <Lounge title={event.title} />;
+            return <Lounge event={event} />;
         } else if (isLeisureEvent(event)) {
-            return <Leisure title={event.title} />;
+            return <Leisure event={event} />;
         } else if (isSightEvent(event)) {
-            return <Sight title={event.title} />; // Customize for sight events if needed
+            return <Sight event={event} />; // Customize for sight events if needed
         }
         // Add more conditions for other types of events
         return <div>{event.title}</div>;
@@ -56,16 +56,10 @@ const EventsOnDate = ({ dayEvents }) => {
                     <div key={index}>
                         {renderEventComponent(event)} {/* Render event components */}
                     </div>
-            
                 ))}
             </div>
         );
     };
-
-    // useEffect(() => {
-    //     console.log(dayEvents);
-    // }, [dayEvents]);
-    
 
     return (
         <div>

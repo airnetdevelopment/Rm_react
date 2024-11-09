@@ -1,5 +1,4 @@
 import React, { useState, useEffect,useRef } from "react";
-import { TabView, TabPanel } from "primereact/tabview";
 import "primeicons/primeicons.css";
 import { Button } from "primereact/button";
 import FlightCategoryWise from "./FlightCategoryWise";
@@ -17,6 +16,15 @@ import { useNavigate } from "react-router-dom";
 import TabularPackage from "../../Components/package/TabularView";
 
 
+const tabs = [
+    { id: "trips", label: "Trips" },
+    { id: "inclusions", label: "Inclusions" },
+    { id: "flights", label: "Flights" },
+    { id: "hotels", label: "Hotels" },
+    { id: "sights", label: "Sights" },
+    { id: "transits", label: "Transits" },
+];
+
 const Package = () => {
 
     const routeSelection =  useSelector(state=>state.routeSelection);
@@ -28,97 +36,8 @@ const Package = () => {
     const [error, setError] = useState(false);
     const [finalPackage, setFinalPackage] = useState(null);
 
-    const didFetchPackage = useRef(false);
-
-    // ----------------------------------------------------------------
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [flightCount, setFlightCount] = useState(3);
-    const [hotelCount, setHotelCount] = useState(2);
-    const [sightseeingCount, setSightseeingCount] = useState(1);
-    const [transitCount, setTransitCount] = useState(2);
-    const [isTabClicked, setIsTabClicked] = useState(false); // Track if a tab was clicked
-   
-    const tabRefs = useRef([]); // Array of refs for each tab content
-
-
-    const tabContent = [
-        {
-            header: "TRIPS",
-            content: (
-                <div className="block">
-                    <p>
-                        {/* <PackagePage /> */}
-                    </p>
-                </div>
-            )
-        },
-        {
-            header: "INCLUSIONS/EXCLUSIONS",
-            content: (
-                <div className="block">
-                    <p>
-                        <InclusionExclusion />
-                    </p>
-                </div>
-            )
-        },
-        {
-            header: (
-                <span style={{ color: flightCount > 0 ? "red" : "black" }}>
-              FLIGHTS {flightCount > 0 && <sup style={{fontWeight:"bold", position: "relative", top: "-15px", backgroundColor: "red", color: "white", padding: "2px 5px", borderRadius: "4px", fontSize: "0.75em",height:"2px",width:"2px" }}>{flightCount}</sup>}
-                </span>
-            ),
-            content: (
-                <div className="block">
-                    <p>
-                        <FlightCategoryWise />
-                    </p>
-                </div>
-            )
-        },
-        {
-            header: (
-                <span style={{ color: hotelCount > 0 ? "red" : "black" }}>
-              HOTELS {hotelCount > 0 && <sup style={{fontWeight:"bold",position: "relative", top: "-15px", backgroundColor: "red", color: "white", padding: "2px 5px", borderRadius: "4px", fontSize: "0.75em" }}>{hotelCount}</sup>}
-                </span>
-            ),
-            content: (
-                <div className="block">
-                    <p>
-                        <HotelsCategoryWise />
-                    </p>
-                </div>
-            )
-        },
-        {
-            header: (
-                <span style={{ color: sightseeingCount > 0 ? "red" : "black" }}>
-              SIGHTSEEINGS {sightseeingCount > 0 && <sup style={{fontWeight:"bold",position: "relative", top: "-15px", backgroundColor: "red", color: "white", padding: "2px 5px", borderRadius: "4px", fontSize: "0.75em" }}>{sightseeingCount}</sup>}
-                </span>
-            ),
-            content: (
-                <div className="block">
-                    <p>
-                        <SightseeingCategoryWise />
-                    </p>
-                </div>
-            )
-        },
-        {
-            header: (
-                <span style={{ color: transitCount > 0 ? "red" : "black" }}>
-              TRANSITS {transitCount > 0 && <sup style={{position: "relative", top: "-15px", backgroundColor: "red", color: "white", padding: "2px 5px", borderRadius: "4px", fontSize: "0.75em",fontWeight:"bold" }}>{transitCount}</sup>}
-                </span>
-            ),
-            content: (
-                <div className="block">
-                    <p>
-                        <TransitCategoryWise />
-                    </p>
-                </div>
-            )
-        }
-    ];
+    const [activeTab, setActiveTab] = useState("trips");
+    
 
     // useEffect(() => {
 
@@ -137,6 +56,20 @@ const Package = () => {
 
     // }, [routeSelection]);
 
+
+    const sections = {
+        trips: useRef(null),
+        inclusions: useRef(null),
+        flights: useRef(null),
+        hotels: useRef(null),
+        sights: useRef(null),
+        transits: useRef(null),
+    };
+    
+    const scrollToSection = (section) => {
+        setActiveTab(section);
+        sections[section].current.scrollIntoView({ behavior: "smooth" });
+    };
     
     const getNewPackage = async(routeId)=>{
         try{
@@ -155,23 +88,6 @@ const Package = () => {
             setLoadingFullPage(false);
         }
     };
-
-    // tab toggling
-    useEffect(() => {
-        if (isTabClicked) {
-            tabRefs.current[activeIndex]?.scrollIntoView({ behavior: "smooth" });
-            setIsTabClicked(false); // Reset after scroll
-        }
-    }, [activeIndex, isTabClicked]);
-
-    const handleTabChange = (e) => {
-        setActiveIndex(e.index);
-        setIsTabClicked(true); // Mark that a tab was clicked
-    };
-
-    // useEffect(()=>{
-    //     console.log(finalPackage);
-    // },[finalPackage]);
     
     if(loadingFullPage){
         return (
@@ -192,43 +108,66 @@ const Package = () => {
 
     return (
 
-        <div className='main-section'>
-            <div className='flex flex-row'>
+        <div className='w-full'>
+            <div className='flex w-full '>
 
                 {/* left section */}
-                <div className='tabsection'>
-                    <div className='card' style={{marginLeft:"10px"}}> 
-
+                <div className='w-[70%]'>
+                    <div className="w-full flex flex-col items-start gap-6 " > 
                         <h1 className='text-indigo-900 font-bold text-2xl underline text-left'>10 nights to Cape Town, Mossel Bay, Milan </h1>
-          
-                        {/* Tabs at the top */}
-                        <div className="card w-[55rem]" style={{ marginLeft: "-10px", marginTop: "1px" }}>
-                            <TabView activeIndex={activeIndex} onTabChange={handleTabChange}>
-                                {tabContent.map((tab, index) => (
-                                    <TabPanel key={index} header={tab.header}></TabPanel>
+                        <div className="w-full flex flex-col gap-10 ">
+                            {/* Tabs */}
+                            <div className="flex overflow-auto border-b border-gray-300 mb-4">
+                                {tabs.map((tab) => (
+                                    <button
+                                        key={tab.id}
+                                        onClick={() => scrollToSection(tab.id)}
+                                        className={`py-2 px-4 text-sm font-medium focus:outline-none ${
+                                            activeTab === tab.id ? "text-blue-500 border-b-2 border-blue-500" : "text-gray-600"
+                                        }`}
+                                    >
+                                        {tab.label}
+                                    </button>
                                 ))}
-                            </TabView>
-                        </div>
-
-                        <TabularPackage />
-
-                        { /* Display corresponding block of content */}
-                        {/* If no tab clicked, display all content, otherwise scroll to clicked tab's content */}
-                        {/* {tabContent.map((tab, index) => (
-                            <div
-                                key={index}
-                                ref={(el) => (tabRefs.current[index] = el)} // Set reference for each tab content
-                                className="card w-[50rem]"
-                            >
-                                {(isTabClicked && activeIndex === index) || !isTabClicked ? tab.content : null}
                             </div>
-                        ))} */}
 
+                            {/* Sections */}
+                            <div className="" >
+                                <section ref={sections.trips} className="mb-8">
+                                    <div> <TabularPackage/> </div>
+                                </section>
+
+                                <section ref={sections.inclusions} className="mb-8">
+                                    <div> <InclusionExclusion/> </div>
+
+                                </section>
+
+                                <section ref={sections.flights} className="mb-8">
+                                    <div> <FlightCategoryWise/> </div>
+
+                                </section>
+
+                                <section ref={sections.hotels} className="mb-8">
+                                    <div> <HotelsCategoryWise/> </div>
+
+                                </section>
+
+                                <section ref={sections.sights} className="mb-8">
+                                    <div> <SightseeingCategoryWise/> </div>
+
+                                </section>
+
+                                <section ref={sections.transits} className="mb-8">
+                                    <div> <TransitCategoryWise/> </div>
+
+                                </section>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 {/* right section */}
-                <div className='flex flex-col'>
+                <div className='w-[30%] flex flex-col items-center'>
 
                     <div className='flex justify-center flex-row space-x-4 h-16 mt-4 mr-4'>
                         <Button label="Check Availabilty" severity="danger" className='mt-5 text-white p-2 font-bold text-sm h-10 w-36 bg-red-500'></Button>

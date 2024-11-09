@@ -1,7 +1,6 @@
 // TransitCard.jsx
-import React from "react";
-import { Card } from "primereact/card";
-import railway from "../../../assets/Iconslatestpackage/icons/railway.png";
+import { useEffect } from "react";
+import railway from "../../../assets/Iconslatestpackage/railway.png";
 import { Button } from "primereact/button";
 // import railway from '../../assets/.png';
 
@@ -55,37 +54,49 @@ const extractTitle = (title) => {
 
 const TransitCard = ({transitEvents}) => {
     
-    return (
-        <div className="ml-4 flex flex-wrap shadow-md relative mr-4 w-[50rem]">
-            <div
-                className={`ml-4 flex mr-4 w-[47rem] overflow-x-auto ${
-                    transitEventsData.length <= 3 ? "justify-center" : "justify-start"
-                }`}
-            >
-                {transitEventsData.map(event => (
-                    <div key={event.id} className="w-full md:w-1/2 lg:w-1/3 p-2 flex rounded-lg items-center justify-center mr-3 shadow-lg">
-                        <div className="w-1/3 h-16">
-                            <img
-                                src={railway} 
-                                alt="Transit"
-                                className="rounded-lg h-8 w-8"
-                            />
-                        </div>
-                        <div className="bg-white p-3 mt-5 h-28 text-[10px] text-left w-2/3 w-[24rem]">
-                            <h3 className="text-xs font-bold mb-1">{extractTitle(event.title)}</h3>
-                            <p>
-                                {formatDate(event.start)} - {formatDate(event.end)}
-                            </p>
-                            <p>{event.description}</p>
-                        </div>
-                    </div>
-                ))}
+    useEffect(() => {
+        console.log(transitEvents);
+    }, [transitEvents]);
+    
 
+    return (
+        <>
+            <div className="ml-4 flex flex-wrap shadow-md relative mr-4 w-[50rem]">
+                <div
+                    className={`ml-4 flex mr-4 w-[47rem] overflow-x-auto ${
+                        transitEventsData.length <= 3 ? "justify-center" : "justify-start"
+                    }`}
+                >
+                    {transitEventsData.map(event => (
+                        <>
+                            <div key={event.id} className="w-full md:w-1/2 lg:w-1/3 p-2 flex rounded-lg items-center justify-center mr-3 shadow-lg">
+                                <div className="w-1/3 h-16">
+                                    <img
+                                        src={railway} 
+                                        alt="Transit"
+                                        className="rounded-lg h-8 w-8"
+                                    />
+                                </div>
+                                <div className="bg-white p-3 mt-5 h-32 text-[10px] text-left  w-[24rem]">
+                                    <h3 className="text-xs font-bold mb-1">{extractTitle(event.title)}</h3>
+                                    <p>
+                                        {formatDate(event.start)} - {formatDate(event.end)}
+                                    </p>
+                                    <p>{event.description}</p>
+                                </div>
+                            </div>
+                        </>
+                    ))}
+                </div>
+                <div className='mt-1 mb-1'>
+                    <Button className='bg-red-400 p-1 text-sm text-white w-24 rounded-md absolute bottom-1 right-1'>Show Details</Button>
+                </div>
             </div>
             {/* <div className='mt-1 mb-1'>
                 <Button className='bg-red-400 p-1 text-sm text-white w-24 rounded-md absolute bottom-1 right-1'>Show Details</Button>
             </div> */}
-        </div>
+       
+        </>
     );
 };
 

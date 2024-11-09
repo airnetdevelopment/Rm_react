@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import LineImage from "../../../assets/Iconslatestpackage/icons/Line 2.png";
 import pencil from "../../../assets/Iconslatestpackage/icons/pencil.png";
 import unchecked from "../../../assets/Iconslatestpackage/icons/unchecked.png";
@@ -896,6 +896,7 @@ const FlightCard = ({flightEvents}) => {
                                 
                             )) }   */}
 
+
                             {flightDetails?.airlines.length > 0 && (
                                 <div className="flex items-center">
                                     {flightDetails.airlines.slice(0, 2).map((a, idx) => (
@@ -906,15 +907,19 @@ const FlightCard = ({flightEvents}) => {
                                     ))}
 
 
+
                                     {/* Tooltip for additional airlines */}
                                     {flightDetails.airlines.length > 2 && (
                                         <div className="relative group">
                                             <div className="ml-5 text-blue-500 text-sm font-bold cursor-pointer">
                                             +{flightDetails.airlines.length - 2} more
+                                            +{flightDetails.airlines.length - 2} more
                                             </div>
                                             <div className="absolute hidden group-hover:block p-2 w-[16rem] bg-indigo-900 rounded shadow-lg text-[12px] text-white z-10 top-full mt-1">
                                                 {flightDetails.airlines.slice(2).map((a, idx) => (
                                                     <div key={idx} className="mb-2">
+                                                        <div className="text-[11px] font-bold">{a.name}</div>
+                                                        <div className="text-[10px]">{a.flightNumber}</div>
                                                         <div className="text-[11px] font-bold">{a.name}</div>
                                                         <div className="text-[10px]">{a.flightNumber}</div>
                                                     </div>
@@ -996,6 +1001,7 @@ const FlightCard = ({flightEvents}) => {
                             )}
                   
 
+                          
                             <div className='flex flex-row items-center justify-between ml-10'>
                                 <div className='h-5 w-5 mr-12'><img src={pencil} alt="" /></div>
                                 <div className='h-5 w-5'><img src={unchecked} alt="" /></div>

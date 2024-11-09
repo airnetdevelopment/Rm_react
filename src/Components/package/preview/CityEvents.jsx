@@ -41,7 +41,6 @@ const CityEvents = ({cityEvents}) => {
                                     </td>
                                 </tr>
                             </div>
-                           
                         )
                     )}
                 </table>
