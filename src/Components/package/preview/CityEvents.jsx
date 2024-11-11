@@ -29,8 +29,8 @@ const CityEvents = ({cityEvents}) => {
                 <table className="flex flex-col" >
                     {cityEvents && cityEvents.length>0 && cityEvents.map((day,idx)=>
                         (  
-                            <div key={idx} className="" >
-                                <tr>
+                            <div key={idx}>
+                                <tr className="flex items-center">
                                     <td>
                                         <div>
                                             {day.date}

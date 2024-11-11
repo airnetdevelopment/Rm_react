@@ -1,13 +1,14 @@
 import React,{ useEffect, useState } from "react";
 import { Button } from "primereact/button";
 import { Tooltip } from "primereact/tooltip";
-import nonrefundable from "../../assets/Iconslatestpackage/icons/nonrefundable.png";
-import refundable from "../../assets/Iconslatestpackage/icons/refundable.png";
-import notavailable from "../../assets/Iconslatestpackage/icons/notavailable.png";
-import available from "../../assets/Iconslatestpackage/icons/available.png";
-import coachclass from "../../assets/Iconslatestpackage/icons/coach-class.png";
+import nonrefundable from "../../assets/icons/nonrefundable.png";
+import refundable from "../../assets/icons/refundable.png";
+import notavailable from "../../assets/icons/notavailable.png";
+import available from "../../assets/icons/available.png";
+import coachclass from "../../assets/icons/coach-class.png";
 import { Image } from "primereact/image";
-import group from "../../assets/Iconslatestpackage/icons/group.png";
+import group from "../../assets/icons/group.png";
+import { ExclusionHotelTooltip, InclusionHotelTooltip, } from "./InclusionExclusionHotelTooltip";
 
 
 const HotelAlternatives = () => {
@@ -95,82 +96,58 @@ const HotelAlternatives = () => {
                             className="w-40 h-auto rounded-lg mr-6"
                         />
                         <div className="flex-1">
-                            <div className="flex items-center text-xs mb-1">
-                                <span className="flex items-center">
-                                    <span className="mr-2 font-bold  text-black">Check-In Time:</span>
-                                    <span className="mr-4">{alt.checkInTime}</span>
-                                </span>
-                                <span className="flex items-center">
-                                    <span className="mr-2 font-bold text-black">Check-Out Time:</span>
-                                    <span className="mr-4">{alt.checkOutTime}</span>
-                                </span>
-                            </div>
-
-                            <div className="flex-1">
-                                <div className="text-xs mb-1">
-                                    {/* First row: Refundable and Accommodates */}
-                                    <div className="flex items-center mb-1">
-                                        <span className="flex items-center mr-4">
-                                            <img
-                                                src={alt.isRefundable ? refundable : nonrefundable} // Use the imported images
-                                                alt="Refundable Icon"
-                                                className="w-4 h-4 mr-1"
-                                            />
-                                            <span>{alt.isRefundable ? "Refundable" : "Non-Refundable"}</span>
-                                        </span>
-                                        <span className="flex items-center">
-                                            <img
-                                                src={group}
-                                                alt="group-icon"
-                                                className="w-4 h-4 mr-1"
-                                            />
-                                            <span className='mr-10'>{alt.accommodates}</span>
-                                            <span className="mr-10 font-bold text-black bg-gray-200 p-1">{alt.rating}Hotel</span>
-                                            <span className="mr-2 font-bold text-black bg-gray-200 p-1">{alt.reviewScore}</span>
-                                            <span>{alt.reviewSource}</span>
-
-                                        </span>
-                                    </div>
-
-                                    {/* Second row: Rating and Review */}
-                                    {/* <div className="flex items-center">
-      <span className="mr-12 font-bold text-indigo-900 bg-gray-200 p-1">{alt.rating}Hotel</span>
-      <span className="mr-2 font-bold text-indigo-900 bg-gray-200 p-1">{alt.reviewScore}</span>
-      <span>{alt.reviewSource}</span>
-    </div> */}
+                            <div className="text-sm font-bold">{alt.room}</div>
+                            <div className="flex text-sm justify-between">
+                                <div className="flex items-center">
+                                    <span className="flex items-center mr-4">
+                                        <img
+                                            src={alt.isRefundable ? refundable : nonrefundable} // Use the imported images
+                                            alt="Refundable Icon"
+                                            className="w-4 h-4 mr-1"
+                                        />
+                                        <span>{alt.isRefundable ? "Refundable" : "Non-Refundable"}</span>
+                                    </span>
+                                    <span className="flex items-center">
+                                        <img
+                                            src={group}
+                                            alt="group-icon"
+                                            className="w-4 h-4 mr-1"
+                                        />
+                                        <span className='mr-10'>{alt.accommodates}</span>
+                                    </span>
+                                </div>
+                                <div className="flex-col text-xs">
+                                    <span className="flex items-center mb-2">
+                                        <span className="font-bold  text-black">Check-In Time: </span>
+                                        <span className="ml-3">{alt.checkInTime}</span>
+                                    </span>
+                                    <span className="flex items-center">
+                                        <span className="font-bold text-black">Check-Out Time: </span>
+                                        <span className="ml-1">{alt.checkOutTime}</span>
+                                    </span>
                                 </div>
                             </div>
 
-
-                            <div className="relative grid grid-cols-2 gap-1 text-xs mb-0 mt-0">
-                                <div className="flex flex-col inclusions" style={{ fontSize: "xs" }}>
-                                    <span className="text-left mb-0" style={{ textDecoration: "underline", fontWeight: "bold", color: "black" }}>Inclusions</span>
-                                    {alt.inclusions.map((item, idx) => (
-                                        <div key={idx} className="flex">
-                    
-                                            <span>
-                                                <svg className="w-4 h-4 text-red-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                                                </svg>
-                                            </span>
-                                            <span className='m-0'>{item}</span>
-                                        </div>
-                                    ))}
+                            <div className="flex items-center mb-1 text-xs">
+                                <span className="mr-10 font-bold text-black bg-gray-200 p-1">{alt.rating}Hotel</span>
+                                <span className="mr-2 font-bold text-black bg-gray-200 p-1">{alt.reviewScore}</span>
+                                <span>{alt.reviewSource}</span>       
+                            </div>
+                            
+                            
+                            {/* tooltip for inclusion and exclusions */}     
+                            <div className="flex mt-6">
+                                <div className="text-sm">
+                                    <Tooltip target=".inclusion" className="text-xs" position="top" ><InclusionHotelTooltip/></Tooltip>
+                                    <Button className="inclusion text-sm text-red-500 font-bold underline mr-12 p-component p-button">Inclusions </Button>
                                 </div>
-
-                                <div className="flex flex-col exclusions" style={{ fontSize: "xs" }}>
-                                    <span className="text-left mb-0" style={{ textDecoration: "underline", fontWeight: "bold", color: "black" }}>Exclusions</span>
-                                    {alt.exclusions.map((item, idx) => (
-                                        <div key={idx} className="flex">
-                                            <span>
-                                                <svg className="w-4 h-4 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
-                                            </span>
-                                            <span>{item}</span>
-                                        </div>
-                                    ))}
+                                <div className="text-sm">
+                                    <Tooltip target=".exclusion" className="text-xs" position="top"  ><ExclusionHotelTooltip /></Tooltip>
+                                    <Button className="exclusion text-sm text-red-500 font-bold underline p-component">Exclusions</Button>
                                 </div>
+                            </div>
+
+                            <div className="relative text-xs mb-0 mt-0">
                                 <Button className='flex justify-center absolute bottom-1 right-1 font-bold text-indigo-900 w-16 h-6 border border-indigo-900 rounded-lg text-xs'>Select</Button>
                             </div>
                         </div>

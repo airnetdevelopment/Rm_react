@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "primereact/card";
 import { Tooltip } from "primereact/tooltip";
-import sedan from "../../assets/Iconslatestpackage/icons/sedan-car-model.png";
+import sedan from "../../assets/icons/sedan-car-model.png";
 
 
 const Commutedata=[

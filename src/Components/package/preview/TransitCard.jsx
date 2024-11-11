@@ -1,6 +1,6 @@
 // TransitCard.jsx
 import { useEffect } from "react";
-import railway from "../../../assets/Iconslatestpackage/railway.png";
+import railway from "../../../assets/icons/railway.png";
 import { Button } from "primereact/button";
 // import railway from '../../assets/.png';
 

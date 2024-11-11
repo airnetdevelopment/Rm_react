@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Button } from "primereact/button";
 import { Tooltip } from "primereact/tooltip";
-import nonrefundable from "../../assets/Iconslatestpackage/icons/nonrefundable.png";
-import refundable from "../../assets/Iconslatestpackage/icons/refundable.png";
-import notavailable from "../../assets/Iconslatestpackage/icons/notavailable.png";
-import available from "../../assets/Iconslatestpackage/icons/available.png";
+import nonrefundable from "../../assets/icons/nonrefundable.png";
+import refundable from "../../assets/icons/refundable.png";
+import notavailable from "../../assets/icons/notavailable.png";
+import available from "../../assets/icons/available.png";
 import { Image } from "primereact/image";
-import timeleft from "../../assets/Iconslatestpackage/icons/time-left.png";
-import binocular from "../../assets/Iconslatestpackage/icons/binocular.png";
+import timeleft from "../../assets/icons/time-left.png";
+import binocular from "../../assets/icons/binocular.png";
 import { Card } from "primereact/card";
 import { Divider } from "primereact/divider";
+import { ExclusionSightTooltip, InclusionSightTooltip } from "./InclusionExclusionHotelTooltip";
 
 const SightSeeingAlternatives = () => {
 
@@ -126,81 +127,65 @@ const SightSeeingAlternatives = () => {
                             alt="Sight Image"
                             className="w-40 h-auto rounded-lg mr-6"
                         />
-                        <div className="flex-1">
-                            <div className="flex items-center text-xs mb-1">
+                        
+                        <div className="flex-col items-center text-xs mt-3">
+                            <div className="flex">
                                 <span className="flex items-center">
-                                    <span className="mr-2 font-bold text-indigo-900">Start Time:</span>
+                                    <span className="mr-2 font-bold text-black">Start Time:</span>
                                     <span className="mr-4">{alt.startTime}</span>
                                 </span>
                                 <span className="flex items-center">
-                                    <span className="mr-2 font-bold text-indigo-900">End Time:</span>
+                                    <span className="mr-2 font-bold text-black">End Time:</span>
                                     <span className="mr-4">{alt.endTime}</span>
                                 </span>
                             </div>
-
-                            <div className="flex-1">
-                                <div className="flex items-center text-xs mb-1">
-                                    <span className="flex items-center">
-                                        <img
-                                            src={timeleft}
-                                            alt="Time Icon"
-                                            className="w-4 h-4 mr-2"
-                                        />
-                                        <span className="mr-4">{alt.timeLeft}</span>
-                                    </span>
-                                    <span className="flex items-center">
-                                        <img
-                                            src={binocular}
-                                            alt="Sightseeing Icon"
-                                            className="w-4 h-4 mr-2"
-                                        />
-                                        <span className="mr-4">{alt.tourType}</span>
-                                    </span>
-                                    <span className="flex items-center">
-                                        <img
-                                            src={alt.isRefundable ? refundable : nonrefundable} // Use the imported images
-                                            alt="Refundable Icon"
-                                            className="w-4 h-4 mr-2"
-                                        />
-                                        <span className="mr-4">{alt.isRefundable ? "Refundable" : "Non-Refundable"}</span>
-                                    </span>
+                                                  
+                            <div className="flex items-center text-xs mt-3">
+                                <span className="flex items-center">
+                                    <img
+                                        src={timeleft}
+                                        alt="Time Icon"
+                                        className="w-4 h-4 mr-2"
+                                    />
+                                    <span className="mr-4">{alt.timeLeft}</span>
+                                </span>
+                                <span className="flex items-center">
+                                    <img
+                                        src={binocular}
+                                        alt="Sightseeing Icon"
+                                        className="w-4 h-4 mr-2"
+                                    />
+                                    <span className="mr-4">{alt.tourType}</span>
+                                </span>
+                                <span className="flex items-center">
+                                    <img
+                                        src={alt.isRefundable ? refundable : nonrefundable} // Use the imported images
+                                        alt="Refundable Icon"
+                                        className="w-4 h-4 mr-2"
+                                    />
+                                    <span className="mr-4">{alt.isRefundable ? "Refundable" : "Non-Refundable"}</span>
+                                </span>
+                            </div>
+                      
+                            {/* tooltip for inclusion and exclusions */}     
+                            <div className="flex mt-6">
+                                <div className="text-sm">
+                                    <Tooltip target=".inclusion" className="text-xs" position="top" ><InclusionSightTooltip/></Tooltip>
+                                    <Button className="inclusion text-sm text-red-500 font-bold underline mr-12 p-component p-button">Inclusions </Button>
+                                </div>
+                                <div className="text-sm">
+                                    <Tooltip target=".exclusion" className="text-xs" position="top"  ><ExclusionSightTooltip /></Tooltip>
+                                    <Button className="exclusion text-sm text-red-500 font-bold underline p-component">Exclusions</Button>
                                 </div>
                             </div>
+                        </div>
 
-                            <div className="relative grid grid-cols-2 gap-1 text-xs mb-0 mt-0">
-                                <div className="flex flex-col inclusions" style={{ fontSize: "xs" }}>
-                                    <span className="text-left mb-0" style={{ textDecoration: "underline", fontWeight: "bold", color: "black" }}>Inclusions</span>
-                                    {alt.inclusions.map((item, idx) => (
-                                        <div key={idx} className="flex">
-                    
-                                            <span>
-                                                <svg className="w-4 h-4 text-red-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                                                </svg>
-                                            </span>
-                                            <span className='m-0'>{item}</span>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="flex flex-col exclusions" style={{ fontSize: "xs" }}>
-                                    <span className="text-left mb-0" style={{ textDecoration: "underline", fontWeight: "bold", color: "black" }}>Exclusions</span>
-                                    {alt.exclusions.map((item, idx) => (
-                                        <div key={idx} className="flex">
-                                            <span>
-                                                <svg className="w-4 h-4 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
-                                            </span>
-                                            <span>{item}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                                <Button className='flex justify-center absolute bottom-1 right-1 font-bold text-indigo-900 w-16 h-6 border border-indigo-900 rounded-lg text-xs'>Select</Button>
-                            </div>
+                        <div className="absolute bottom-1 right-1 text-xs mb-0 mt-0">
+                            <Button className='flex justify-center items-center font-bold text-indigo-900 w-16 h-6 border border-indigo-900 rounded-lg text-xs'>Select</Button>
                         </div>
                     </div>
                 </div>
+            
             ))}
         </div>
       
