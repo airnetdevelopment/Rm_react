@@ -1,14 +1,14 @@
 .event-div {
     position: relative;
-      width: 14rem; /* Fixed width for all event divs */
+      width: 14rem; 
       height: 6rem !important;
       font-size: 11px;
-      display: flex; /* Center content */
-      align-items: center; /* Center items vertically */
-      justify-content: center; /* Center items horizontally */
-      transition: box-shadow 0.3s; /* Transition effect for glow */
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      transition: box-shadow 0.3s; 
       text-align: center;
-      /* overflow-x: auto; */
+    
     }
     .info-icon {
       position: absolute;

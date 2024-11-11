@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "primereact/button";
 import { Tooltip } from "primereact/tooltip";
-import nonrefundable from "../../assets/Iconslatestpackage/icons/nonrefundable.png";
-import refundable from "../../assets/Iconslatestpackage/icons/refundable.png";
-import notavailable from "../../assets/Iconslatestpackage/icons/notavailable.png";
-import available from "../../assets/Iconslatestpackage/icons/available.png";
-import coachclass from "../../assets/Iconslatestpackage/icons/coach-class.png";
+import nonrefundable from "../../assets/icons/nonrefundable.png";
+import refundable from "../../assets/icons/refundable.png";
+import notavailable from "../../assets/icons/notavailable.png";
+import available from "../../assets/icons/available.png";
+import coachclass from "../../assets/icons/coach-class.png";
 import { Image } from "primereact/image";
-import group from "../../assets/Iconslatestpackage/icons/group.png";
+import group from "../../assets/icons/group.png";
 import { Dialog } from "primereact/dialog";
 import HotelAlternatives from "./HotelAlternatives";
 
@@ -20,7 +20,7 @@ const HotelsCategoryWise = () => {
         <div className="w-[50rem] mb-6 bg-white rounded-lg">
             <h3 className="text-lg font-bold text-black text-left mb-4">HOTELS</h3>
             <div className="bg-white shadow-lg rounded-lg overflow-hidden mb-6">
-                <div className="flex justify-between items-center border-b border-gray-200 p-4 bg-gray-100">
+                <div className="flex justify-between items-center border-b border-gray-200 p-2 bg-gray-100">
                     <div>
                         <h3 className="text-lg text-left font-bold">Hotel Ivory</h3>
                         <div className="flex items-center text-black text-sm mt-1 font-semibold">
@@ -30,10 +30,10 @@ const HotelsCategoryWise = () => {
                         </div>
                     </div>
                     <div className="flex items-center space-x-4">
-                        <Tooltip target=".info-button" content="More Info" />
-                        <Button label="i" className="info-button text-gray-500 border border-black h-8 w-6" />
-                        <Tooltip target=".change-button" content="Change Hotel" />
-                        <Button label="Change" onClick={()=>setHotelVisible(true)} className="change-button text-gray-500 border border-black h-8 w-16" />
+                        <Tooltip target=".info-button" content="More Info" className="text-xs" position="top" />
+                        <Button label="i" className="info-button text-gray-500 border border-black h-8 w-6 text-sm" />
+                        <Tooltip target=".change-button" content="Change Hotel" className="text-xs" position="top" />
+                        <Button label="Change" onClick={()=>setHotelVisible(true)} className="text-sm change-button text-gray-500 border border-black h-8 w-16" />
                     </div>
                     {/* Dialog Component */}
                     <Dialog
@@ -52,19 +52,6 @@ const HotelsCategoryWise = () => {
                 </div>
 
                 <div className="flex p-4 relative">
-                    {/* {!isHotelAvailable ? (
-                        <img
-                            src="assets/icons/Iconslatestpackage/not-available.png"
-                            alt="Not Available"
-                            className="absolute top-2 right-2 w-24 h-8 rounded-lg mr-0"
-                        />
-                    ) : (
-                        <img
-                            src="assets/icons/Iconslatestpackage/available.png"
-                            alt="Available"
-                            className="absolute top-2 right-2 w-24 h-8 rounded-lg mr-0"
-                        />
-                    )} */}
                     <img src="hotel-image.jpg" alt="Hotel Image" className="w-48 h-auto rounded-lg mr-6" />
                     <div className="flex-1">
                         <h4 className="text-xl font-bold mb-2 text-left text-black">Deluxe Double Room</h4>
@@ -92,7 +79,7 @@ const HotelsCategoryWise = () => {
                                 <span className="mr-2 text-black">2:00 PM</span>
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-2 text-sm mb-4">
+                        <div className="grid grid-cols-2 gap-2 text-sm">
                             <div className="flex">
                                 <span>
                                     <svg

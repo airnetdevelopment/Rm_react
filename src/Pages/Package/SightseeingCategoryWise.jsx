@@ -6,13 +6,13 @@ import "primeicons/primeicons.css";
 import "primereact/resources/themes/saga-blue/theme.css"; // Adjust theme as needed
 import "primereact/resources/primereact.min.css";
 import { Tooltip } from "primereact/tooltip";
-import nonrefundable from "../../assets/Iconslatestpackage/icons/nonrefundable.png";
-import refundable from "../../assets/Iconslatestpackage/icons/refundable.png";
-import notavailable from "../../assets/Iconslatestpackage/icons/notavailable.png";
-import available from "../../assets/Iconslatestpackage/icons/available.png";
+import nonrefundable from "../../assets/icons/nonrefundable.png";
+import refundable from "../../assets/icons/refundable.png";
+import notavailable from "../../assets/icons/notavailable.png";
+import available from "../../assets/icons/available.png";
 import { Image } from "primereact/image";
-import timeleft from "../../assets/Iconslatestpackage/icons/time-left.png";
-import binocular from "../../assets/Iconslatestpackage/icons/binocular.png";
+import timeleft from "../../assets/icons/time-left.png";
+import binocular from "../../assets/icons/binocular.png";
 import { Dialog } from "primereact/dialog";
 import SightSeeingAlternatives from "./SightSeeingAlternatives";
 
@@ -33,10 +33,10 @@ const SightseeingCategoryWise = () => {
                         </div>
                     </div>
                     <div className="flex items-center space-x-4">
-                        <Tooltip target=".info-button" content="More Info" className='text-xs' />
-                        <Button label="i" className="info-button text-gray-500 border border-black h-8 w-6" />
-                        <Tooltip target=".change-button" content="Change Hotel" className='text-xs' />
-                        <Button label="Change" onClick={()=>setSightVisible(true)} className="change-button text-gray-500 border border-black h-8 w-16" />
+                        <Tooltip target=".info-button" content="More Info" className='text-xs' position="top" />
+                        <Button label="i" className="text-sm info-button text-gray-500 border border-black h-8 w-6" />
+                        <Tooltip target=".change-button" content="Change Hotel" className='text-xs' position="top" />
+                        <Button label="Change" onClick={()=>setSightVisible(true)} className="text-sm change-button text-gray-500 border border-black h-8 w-16" />
                     </div>
               
                     {/* Dialog Component */}
@@ -109,6 +109,7 @@ const SightseeingCategoryWise = () => {
                         </div>
 
                         <div className="grid grid-cols-2 gap-2 text-sm mb-4 mt-2">
+                            
                             <div className="flex flex-col inclusions" style={{ fontSize: "sm" }}>
                                 <span className='text-left mb-2' style={{ textDecoration: "underline", fontSize: "16px",fontWeight:"bold",color:"black" }}>Inclusions</span>
                                 <div className="flex">

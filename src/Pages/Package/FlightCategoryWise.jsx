@@ -1,12 +1,11 @@
 import React,{useState} from "react";
 import { Card } from "primereact/card";
-import { Divider } from "primereact/divider";
 import { Image } from "primereact/image";
-import nonrefundable from "../../assets/Iconslatestpackage/icons/nonrefundable.png";
-import refundable from "../../assets/Iconslatestpackage/icons/refundable.png";
-import notavailable from "../../assets/Iconslatestpackage/icons/notavailable.png";
-import available from "../../assets/Iconslatestpackage/icons/available.png";
-import coachclass from "../../assets/Iconslatestpackage/icons/coach-class.png";
+import nonrefundable from "../../assets/icons/nonrefundable.png";
+import refundable from "../../assets/icons/refundable.png";
+import notavailable from "../../assets/icons/notavailable.png";
+import available from "../../assets/icons/available.png";
+import coachclass from "../../assets/icons/coach-class.png";
 import { Dialog } from "primereact/dialog";
 import { Tooltip } from "primereact/tooltip";
 import { Button } from "primereact/button";
@@ -101,7 +100,7 @@ const FlightCategoryWise = () => {
     return (
         <div className="w-[50rem] mb-6 bg-white rounded-lg mt-4">
             <h3 className="text-lg font-bold text-black text-left mb-4">FLIGHTS</h3>
-            {/* <section className="p-1"> */}
+        
             {flights.map((flight, flightIndex) => (
                 <Card key={flightIndex} className="bg-white rounded-lg shadow-lg mb-2 p-1">
                     <div className="flex justify-between items-center border-b pb-1 mb-1 bg-gray-100 pl-2 pt-1">
@@ -113,17 +112,17 @@ const FlightCategoryWise = () => {
 
                     <div className="flex flex-col space-y-3 rounded-md">
                         {flight.segments.map((segment, segmentIndex) => (
-                            <Card key={segmentIndex} className="flex flex-col border border-gray-100 rounded-md mt-2">
+                            <Card key={segmentIndex} className="flex flex-col border border-gray-100 rounded-md">
                                 <div className="flex justify-between items-center border-b pb-1 mb-3 bg-gray-50 pl-2 pt-1">
                                     <div>
                                         <div className="text-lg font-bold">{segment.segmentRoute}</div>
                                         <div className="text-black text-sm">{segment.segmentDate}</div>
                                     </div>
                                     <div className="flex items-center space-x-4">
-                                        <Tooltip target=".info-button" content="More Info" className='text-xs' />
-                                        <Button label="i" className="info-button text-gray-500 border border-black h-8 w-6" />
-                                        <Tooltip target=".change-button" content="Change Hotel" className='text-xs' />
-                                        <Button label="Change" onClick={()=>setFlightVisible(true)} className="change-button text-gray-500 border border-black h-8 w-16" />
+                                        <Tooltip target=".info-button" content="More Info" className='text-xs' position="top" />
+                                        <Button label="i" className="text-sm info-button text-gray-500 border border-black h-8 w-6" />
+                                        <Tooltip target=".change-button" content="Change Hotel" className='text-xs' position="top" />
+                                        <Button label="Change" onClick={()=>setFlightVisible(true)} className="text-sm change-button text-gray-500 border border-black h-8 w-16" />
                                     </div>
               
                                     {/* Dialog Component */}
@@ -155,8 +154,8 @@ const FlightCategoryWise = () => {
                                     <Image src={segment.available ? available : notavailable} alt={segment.available ? "Available" : "Not Available"} className="absolute top-1 right-2 w-24 h-8 rounded-lg mr-0" />
                                 </div>
 
-                                <Divider />
-                                <div className="flex items-center space-x-12">
+                        
+                                <div className="flex items-center space-x-12 mt-3">
                                     <div className="flex">
                                         <div className="flex-col">
                                             <Image src={segment.logo} alt={segment.name} className="w-12" />
@@ -186,8 +185,8 @@ const FlightCategoryWise = () => {
                                     </div>
                                 </div>
 
-                                <Divider />
-                                <div className="flex text-black text-sm">
+                    
+                                <div className="flex text-black text-sm mt-3">
                                     <div className="flex space-x-2">
                                         <span>📜</span>
                                         <div className="notification text-xs">
@@ -203,7 +202,7 @@ const FlightCategoryWise = () => {
                     </div>
                 </Card>
             ))}
-            {/* </section> */}
+        
         </div>
     );
 };

@@ -1,11 +1,13 @@
+import React, { useEffect } from "react";
+import Lounge from "../../../Pages/Package/Lounge";
+import Leisure from "../../../Pages/Package/Leisure";
+import Commute from "../../../Pages/Package/Commute";
+import Sight from "../../../Pages/Package/Sight";
 import "primereact/resources/themes/saga-blue/theme.css"; // Theme
 import "primereact/resources/primereact.min.css"; // Core CSS
 import "primeicons/primeicons.css"; // Icons
 import "../../../css/EventTable.css";
-import Lounge from "./event-types/Lounge";
-import Commute from "./event-types/Commute";
-import Sight from "./event-types/Sight";
-import Leisure from "./event-types/Leisure";
+
 
 
 const EventsOnDate = ({ dayEvents }) => {
@@ -50,7 +52,8 @@ const EventsOnDate = ({ dayEvents }) => {
         return (
             <div className='flex overflow-x-auto w-[44rem]'>
                 {eventsOnDate.map((event, index) => (
-                    <div key={index} className="event-div">
+            
+                    <div key={index}>
                         {renderEventComponent(event)} {/* Render event components */}
                     </div>
                 ))}
@@ -59,7 +62,7 @@ const EventsOnDate = ({ dayEvents }) => {
     };
 
     return (
-        <div className='event-table-container'>
+        <div>
             { eventTemplate(dayEvents)  }
         </div>
     );

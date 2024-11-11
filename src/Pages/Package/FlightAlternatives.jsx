@@ -1,9 +1,9 @@
-import React from "react"
-import nonrefundable from "../../assets/Iconslatestpackage/icons/nonrefundable.png";
-import refundable from "../../assets/Iconslatestpackage/icons/refundable.png";
-import notavailable from "../../assets/Iconslatestpackage/icons/notavailable.png";
-import available from "../../assets/Iconslatestpackage/icons/available.png";
-import coachclass from "../../assets/Iconslatestpackage/icons/coach-class.png";
+import React from "react";
+import nonrefundable from "../../assets/icons/nonrefundable.png";
+import refundable from "../../assets/icons/refundable.png";
+import notavailable from "../../assets/icons/notavailable.png";
+import available from "../../assets/icons/available.png";
+import coachclass from "../../assets/icons/coach-class.png";
 // import { Button } from 'primereact/button';
 // import { Tooltip } from 'react-leaflet';
 // import { Tooltip } from 'primereact/tooltip';
@@ -263,23 +263,33 @@ const FlightAlternatives = () => {
         } 
     ];
 
+    const formattedDate = new Date("2024-09-03").toLocaleDateString("en-US", {
+        day: "numeric",
+        month: "short",
+        year: "numeric"
+    }).replace(" ", " ").replace(",", ",");
+      
+    console.log(formattedDate); // Output: "3 Sep, 2024"
+      
+
     return (
+
         <div>
             {flightalternatives.map((alternative, index) => {
-                const segment = alternative.flightDetails?.detail?.legs[0]; // Access the first leg safely
+                const segment = alternative.flightDetails?.detail?.legs[0]; 
 
-                if (!segment) return null; // Return null if the segment does not exist
+                if (!segment) return null; 
 
                 return (
                     <div key={alternative.event.id} className=" mb-3 shadow-lg flex flex-col border border-gray-300 rounded-md mt-1">
                         <div className="flex justify-between items-center border-b pb-1 mb-1 bg-gray-50">
                             <div>
-                                <div className="text-sm font-bold p-2">{alternative.event.title}</div>
-                                <div className="text-black text-xs">{new Date(alternative.event.start).toLocaleDateString()}</div>
+                                <div className="text-sm font-bold pl-2 p-2 text-black">{alternative.event.title}</div>
+                                <div className="text-black text-xs pl-2">{formattedDate}</div>
                             </div>
                         </div>
 
-                        <div className="flex items-center space-x-4 relative p-2">
+                        <div className="flex items-center space-x-4 relative p-2 pl-4">
                             <div className="flex items-center space-x-1 text-xs">
                                 {/* Example for refundable status */}
                                 <Image src={segment.duration > 0 ? refundable : nonrefundable} alt="Refundable" className="w-5 h-5" />
@@ -287,7 +297,7 @@ const FlightAlternatives = () => {
                             </div>
                             <div className="flex items-center space-x-1 text-xs">
                                 <Image src={coachclass} alt="Class" className="w-5 h-5" />
-                                <span className="text-xs">{segment.airline}</span>
+                                <span className="text-xs">2 Adults</span>
                             </div>
                             <Image src={alternative.availability === "available" ? available : notavailable} alt="Available" className="absolute top-1 right-2 w-24 h-8 rounded-lg mr-0" />
                         </div>
@@ -296,41 +306,38 @@ const FlightAlternatives = () => {
                                 <div className="flex-col">
                                     <Image src={segment.airlineLogo || segment.logo} alt={segment.airline || "Airline"} className="w-12" />
                                 </div>
-                                <div className="flex-col">
-                                    <div className="font-bold text-xs">{segment.airline}</div>
+                                <div className="flex-col text-center">
+                                    <div className="font-bold text-xs text-black">{segment.airline}</div>
                                     <div className="text-black text-xs">{segment.flightNumber}</div>
                                 </div>
                             </div>
 
-                            <div className="flex-col">
-                                <div className="text-xs font-bold">{new Date(segment.departure_time).toLocaleTimeString()}</div>
+                            <div className="flex-col text-center">
+                                <div className="text-xs font-bold text-black">{formattedDate}</div>
                                 <div className="text-xs">{segment.from}</div>
                             </div>
                             <div className="flex-col">
-                                <div className="flex justify-center text-xs text-gray-500">{Math.floor(segment.duration / 60)}h {segment.duration % 60}m</div>
+                                <div className="flex justify-center text-xs text-black font-bold">{Math.floor(segment.duration / 60)}h {segment.duration % 60}m</div>
                                 <div className="flex items-center justify-center">
-                                    <div className="w-16 h-px bg-gray-400"></div>
+                                    <div className="w-10 h-px bg-gray-400"></div>
                                     <div className="w-2 h-2 bg-gray-500 rounded-full mx-2"></div>
-                                    <div className="w-16 h-px bg-gray-400"></div>
+                                    <div className="w-10 h-px bg-gray-400"></div>
                                 </div>
-                                {/* <div className="flex text-sm text-blue-400 justify-center">{segment.legs.length} Stop{segment.legs.length > 1 ? 's' : ''}</div> */}
                             </div>
-                            <div className="flex-col">
-                                <div className="text-xs font-bold">{new Date(segment.arrival_time).toLocaleTimeString()}</div>
+                            <div className="flex-col text-center">
+                                <div className="text-xs font-bold text-black">{new Date(segment.arrival_time).toLocaleTimeString()}</div>
                                 <div className="text-xs">{segment.to}</div>
                             </div>
                         </div>
-                        <div className="flex text-black text-sm mt-2 p-2">
-                            <div className="flex justify-between space-x-2">
-                                <span>📜</span>
-                                <div className="notification text-xs">
-            Baggage Info: {alternative.event.description}
-                                </div>
-                                <div className="alert ml-5">
-                                    <a href="#" className="text-blue-500 text-xs">View Alerts</a>
-                                </div>
+                        
+                        <hr className="mt-3 mb-1" style={{marginBottom:"1px"}} />
+                        <div className="flex justify-between text-black text-xs mt-2 p-2">
+                            <span>📜 Baggage Info: {alternative.event.description}</span>
+                            <div className="ml-10">
+                                <a href="#" className="text-blue-500 text-xs">View Alerts</a>
                             </div>
                         </div>
+
                     </div>
                 );
             })}
@@ -338,7 +345,7 @@ const FlightAlternatives = () => {
 
       
         </div>
-    )
-}
+    );
+};
 
-export default FlightAlternatives
+export default FlightAlternatives;

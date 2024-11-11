@@ -1,6 +1,6 @@
 // TransitCard.jsx
 import { useEffect, useState } from "react";
-import railway from "../../../assets/Iconslatestpackage/railway.png";
+import railway from "../../../assets/icons/railway.png";
 import { Button } from "primereact/button";
 import { parseDateTimeWithZ } from "../../../utils/formattime";
 import { PropagateLoader } from "react-spinners";
@@ -112,6 +112,10 @@ const TransitCard = ({transitEvents}) => {
                 </div>
             )}
 
+            {/* <div className='mt-1 mb-1'>
+                <Button className='bg-red-400 p-1 text-sm text-white w-24 rounded-md absolute bottom-1 right-1'>Show Details</Button>
+            </div> */}
+       
         </>
     );
 };
