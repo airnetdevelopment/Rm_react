@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import Lounge from "../../../Pages/Package/Lounge";
-import Leisure from "../../../Pages/Package/Leisure";
-import Commute from "../../../Pages/Package/Commute";
-import Sight from "../../../Pages/Package/Sight";
+import Commute from "./event-types/Commute";
+import Lounge from "./event-types/Lounge";
+import Sight from "./event-types/Sight";
+import Leisure from "./event-types/Leisure";
 import "primereact/resources/themes/saga-blue/theme.css"; // Theme
 import "primereact/resources/primereact.min.css"; // Core CSS
 import "primeicons/primeicons.css"; // Icons

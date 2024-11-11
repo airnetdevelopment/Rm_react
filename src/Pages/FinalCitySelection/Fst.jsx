@@ -1,15 +1,12 @@
-// CitySelection.jsx
-
 import { useState, useEffect, useRef } from "react";
 import { Card } from "primereact/card";
 import "primeicons/primeicons.css";
 import { LockIcon, UnlockIcon,TrashIcon } from "@primer/octicons-react";
-import testimage from "../../assets/testimage.jpg";
 import NightsDialog from "./NightsSightCounter";
 import { Button } from "primereact/button";
 import Sortable from "sortablejs";
 import { useSelector } from "react-redux";
-
+import testImage from "../../assets/testimage.jpg";
 
 // Sample mock data for departure cities
 const mockDepartureCityDetails = [
@@ -126,7 +123,7 @@ const DepartureCityCard = ({ departureCityDetails, onAirportSelected,onToggleLoc
                             </button>
                         </div>
                         <img
-                            src={testimage}
+                            src={testImage}
                             alt={departureCityDetails.city_name}
                             className="object-cover w-full h-full rounded-t-xl bg-gray-500"
                         />

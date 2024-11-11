@@ -4,9 +4,9 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { Card } from "primereact/card";
 import "primeicons/primeicons.css";
 import { LockIcon, UnlockIcon,TrashIcon } from "@primer/octicons-react";
-import testimage from "../../assets/testimage.jpg";
 import NightsDialog from "./NightsSightCounter";
 import { Button } from "primereact/button";
+import testImage from "../../assets/testimage.jpg";
 
 // Sample mock data for departure cities
 const mockDepartureCityDetails = [
@@ -154,7 +154,6 @@ const mockDepartureCityDetails = [
 
 // DepartureCityCard component
 const DepartureCityCard = ({ departureCityDetails, onAirportSelected,onToggleLock, onDeleteCity }) => {
-    const countryImageUrl = "/assets/testimage.jpg";
     const [locked, setLocked] = useState(departureCityDetails.locked);
 
     // Toggle lock state on click
@@ -187,7 +186,7 @@ const DepartureCityCard = ({ departureCityDetails, onAirportSelected,onToggleLoc
                             </button>
                         </div>
                         <img
-                            src={testimage}
+                            src={testImage}
                             alt={departureCityDetails.city_name}
                             className="object-cover w-full h-full rounded-t-xl bg-gray-500"
                         />

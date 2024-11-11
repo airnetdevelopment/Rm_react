@@ -701,7 +701,6 @@ const dummy= [
 ];
 
 
-
 const convertFlightData = (events) => {
     // Assuming events is the array of flight events.
     if (!events || events.length === 0) return null;
@@ -722,8 +721,6 @@ const convertFlightData = (events) => {
         layover: [],
         totalDuration: 0
     };
-
-    
 
     // Initialize total duration counter
     let totalDuration = 0;
@@ -805,8 +802,6 @@ const layovers = [
     }
 ];
   
-console.log(dummy[1].event.title);
-console.log(dummy[1].event.city);
 
 
 const FlightCard = ({flightEvents}) => {
@@ -824,7 +819,6 @@ const FlightCard = ({flightEvents}) => {
         setLoading(false);
     }, [flightEvents]);
 
-    console.log(layovers.length);
 
     // Function to determine the image based on the number of layovers
     const getFlightImage = () => {
@@ -871,17 +865,17 @@ const FlightCard = ({flightEvents}) => {
     const handleMouseLeave = () => {
         setTimeout(() => {
             setTooltipVisible(false);
-        }, 5000);
+        }, 1000);
     };
     
 
     return (
         <>
             {flightDetails && (
-                <div className="mt-[-20px] mb-3 ml-4 shadow-md bg-white border border-gray-300 h-24 w-[50rem]">
+                <div className="w-full h-24 shadow-md bg-white border border-gray-300 ">
             
                     <div className="p-4">
-                        <div className='flex flex-row'>
+                        <div className='flex items-center justify-evenly'>
 
                             {/* multiple airlines */}
                             <div className="flex items-center">
@@ -891,7 +885,7 @@ const FlightCard = ({flightEvents}) => {
                                 </div>
                             
                                 <div
-                                    className="text-blue-500 mt-4 text-xs font-bold cursor-pointer"
+                                    className="text-blue-500 mt-4 text-[10px] font-bold cursor-pointer"
                                     data-pr-tooltip="Vistara: UK202, SpiceJet: SG105" 
                                     data-pr-position="top"
                                 >
@@ -913,7 +907,7 @@ const FlightCard = ({flightEvents}) => {
                                 <div className='flex flex-col items-center'>
                                     <div className='mb-2 ml-6 mr-6 mt-2 text-sm font-bold'>{flightDetails.totalDuration} </div>
                                     
-                                    <div className="w-16 h-5 ml-5 mr-5 relative"
+                                    <div className=" relative  "
                                         onMouseEnter={handleMouseEnter}  // Show tooltip when hovering over the parent div
                                         onMouseLeave={handleMouseLeave} // Hide tooltip when the mouse leaves the parent div
                                     >
@@ -926,7 +920,7 @@ const FlightCard = ({flightEvents}) => {
 
                                         {/* Tooltip */}
                                         {isTooltipVisible && layovers.length > 0 && (
-                                            <div className="p-2 w-[16rem] absolute top-[-55px] left-[-75px] bg-indigo-900 rounded shadow-lg text-[10px] text-white z-10">
+                                            <div className="p-2 w-[16rem] absolute top-[-55px] left-[-75px] bg-gray-900 opacity-90 rounded shadow-lg text-[10px] text-white z-10">
                                                 <div className="flex justify-between items-center">
                                                     <button onClick={goToPrevious1} className="text-white text-xs">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-chevron-left" viewBox="0 0 16 16">
@@ -934,16 +928,7 @@ const FlightCard = ({flightEvents}) => {
                                                         </svg>
                                                     </button>
                                                     <div className="text-xs"> 
-                                                        {layovers[currentIndex1].planeChange === "Yes" && (
-                                                            <div className="text-[11px]">Plane Change</div>
-                                                        )}
-                                                        {layovers[currentIndex1].terminalChange === "Yes" && (
-                                                            <div className="text-[11px]">Terminal Change</div>
-                                                        )}
-                                                        {layovers[currentIndex1].airportChange === "Yes" && (
-                                                            <div className="text-[11px]">Airport Change</div>
-                                                        )}
-
+                                                        <div className="text-[11px]">Plane Change</div>
                                                         <div className='flex'>
                                                             <div className='mt-1 mr-1'> {layovers[currentIndex1].city } </div>
                                                             <div className='mt-1'> | {layovers[currentIndex1].duration}min Layover </div>
@@ -971,7 +956,6 @@ const FlightCard = ({flightEvents}) => {
                           
                             <div className='flex flex-row items-center justify-between ml-10'>
                                 <div className='h-5 w-5 mr-12'><img src={pencil} alt="" /></div>
-                                <div className='h-5 w-5'><img src={unchecked} alt="" /></div>
                             </div>
 
                         </div>

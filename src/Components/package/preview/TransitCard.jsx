@@ -42,19 +42,11 @@ const transitEventsData = [
     }
 ];
 
-// Helper function to format the date
-const formatDate = (dateString) => {
-    const options = { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit", hour12: false };
-    return new Date(dateString).toLocaleString("en-GB", options).replace(",", "");
-};
-
 // Helper function to extract the relevant title part
 const extractTitle = (title) => {
     const parts = title.split(": ");
     return parts.length > 1 ? parts[1] : title; // Return the part after the colon
 };
-
-
 
 const TransitCard = ({transitEvents}) => {
     
@@ -78,23 +70,23 @@ const TransitCard = ({transitEvents}) => {
     return (
         <>
             {transitDetailsArr && transitDetailsArr.length>0 && (
-                <div className="ml-4 flex flex-wrap shadow-md relative mr-4 w-[50rem]">
+                <div className=" flex flex-wrap shadow-md relative w-full">
                     <div
-                        className={`ml-4 flex mr-4 w-[47rem] overflow-x-auto ${
+                        className={`flex gap-3 w-full overflow-x-auto overflow-y-hidden ${
                             transitDetailsArr.length <= 3 ? "justify-center" : "justify-start"
                         }`}
                     >
                         {transitDetailsArr.map((event,idx) => (
                             <>
-                                <div key={idx} className="w-full md:w-1/2 lg:w-1/3 p-2 flex rounded-lg items-center justify-center mr-3 shadow-lg">
-                                    <div className="w-1/3 h-16">
+                                <div key={idx} className="w-[15rem]  p-2 flex rounded-lg items-center justify-evenly shadow-lg">
+                                    <div className=" min-w-10 flex items-center justify-center ">
                                         <img
                                             src={railway} 
                                             alt="Transit"
                                             className="rounded-lg h-8 w-8"
                                         />
                                     </div>
-                                    <div className="bg-white p-3 mt-5 h-32 text-[10px] text-left  w-[24rem]">
+                                    <div className="bg-white py-3  text-[10px] text-left ">
                                         <h3 className="text-xs font-bold mb-1 text-center">{extractTitle(event.title)}</h3>
                                         <p className="text-xs font-medium text-center" >
                                             {parseDateTimeWithZ(event.start).date} - {parseDateTimeWithZ(event.end).date}

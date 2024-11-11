@@ -9,13 +9,8 @@ const TabularView = () => {
 
     const [eventsArr, setEventsArr] = useState(events);
 
-    useEffect(() => {
-        console.log(eventsArr);
-    }, [eventsArr]);
-    
-
     return (
-        <main className="flex flex-col gap-4" >
+        <main className="w-full flex flex-col items-center gap-4 px-6" >
             {eventsArr && eventsArr.length > 0 && eventsArr.map((e, index) => (
                 <React.Fragment key={index}>
                     {e.eventType === "interCity" && e.commuteType === "flightOnly" ? (

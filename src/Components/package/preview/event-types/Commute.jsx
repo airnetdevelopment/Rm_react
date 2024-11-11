@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { parseDateTimeWithZ } from "../../../../utils/formattime";
-import bus from "../../../../assets/Iconslatestpackage/bus.png";
+import bus from "../../../../assets/icons/bus.png";
 
 const Commute = ({event}) => {
     
@@ -13,7 +13,7 @@ const Commute = ({event}) => {
     return (
         <>
             {eventDetails && (
-                <div className=" p-2 m-1 rounded">
+                <div className="h-full flex items-center p-2 m-1 rounded">
                     {/* <div className='flex flex-col text-center flex-grow'>
                         <h3 className="font-bold border-2 border-gray-600 rounded-full w-6" >C</h3>
                         <div className='font-bold underline'>{parseDateTimeWithZ(eventDetails.start).time }-{parseDateTimeWithZ(eventDetails.end).time }</div>

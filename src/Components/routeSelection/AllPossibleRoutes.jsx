@@ -1,8 +1,7 @@
 import { ScrollPanel } from "primereact/scrollpanel";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Card } from "primereact/card";
-import { Badge } from "primereact/badge";
-import railway from "../../assets/railway.png";
+import railway from "../../assets/icons/railway.png";
 import { useDispatch } from "react-redux";
 import { updateSelectedRoute } from "../../redux/features/routeSelectionSlice";
 import { useNavigate } from "react-router-dom";

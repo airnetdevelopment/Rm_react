@@ -138,33 +138,33 @@ const Package = () => {
                             </div>
 
                             {/* Sections */}
-                            <div className="" >
-                                <section ref={sections.trips} className="mb-8">
-                                    <div> <TabularPackage/> </div>
+                            <div className="w-full flex flex-col items-center " >
+                                <section ref={sections.trips} className="w-full">
+                                    <div className="w-full" > <TabularPackage/> </div>
                                 </section>
 
-                                <section ref={sections.inclusions} className="mb-8">
-                                    <div> <InclusionExclusion/> </div>
-
-                                </section>
-
-                                <section ref={sections.flights} className="mb-8">
-                                    <div> <FlightCategoryWise/> </div>
+                                <section ref={sections.inclusions} className="w-full">
+                                    <div className="w-full" > <InclusionExclusion/> </div>
 
                                 </section>
 
-                                <section ref={sections.hotels} className="mb-8">
-                                    <div> <HotelsCategoryWise/> </div>
+                                <section ref={sections.flights} className="w-full">
+                                    <div className="w-full"> <FlightCategoryWise/> </div>
 
                                 </section>
 
-                                <section ref={sections.sights} className="mb-8">
-                                    <div> <SightseeingCategoryWise/> </div>
+                                <section ref={sections.hotels} className="w-full">
+                                    <div className="w-full"> <HotelsCategoryWise/> </div>
 
                                 </section>
 
-                                <section ref={sections.transits} className="mb-8">
-                                    <div> <TransitCategoryWise/> </div>
+                                <section ref={sections.sights} className="w-full">
+                                    <div className="w-full"> <SightseeingCategoryWise/> </div>
+
+                                </section>
+
+                                <section ref={sections.transits} className="w-full">
+                                    <div className="w-full"> <TransitCategoryWise/> </div>
 
                                 </section>
                             </div>

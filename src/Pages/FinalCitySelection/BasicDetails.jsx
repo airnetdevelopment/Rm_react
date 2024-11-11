@@ -3,7 +3,6 @@ import { Dropdown } from "primereact/dropdown";
 import { Calendar } from "primereact/calendar";
 import { InputText } from "primereact/inputtext";
 import { FloatLabel } from "primereact/floatlabel";
-import visionbinimage from "../../assets/visionbinimage.png";
 import "primereact/resources/primereact.min.css"; 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import TravellerModal from "./TravellerModal1";
