@@ -9,7 +9,7 @@ import "primeicons/primeicons.css";
 const PaymentDetails =()=>{
     return(
 
-        <div className="h-[25rem] w-[18rem] bg-indigo-900 text-white rounded-lg border-2 border-gray-600 shadow-xl mt-20 mr-5">
+        <div className="h-[25rem] w-full bg-indigo-900 text-white rounded-lg border-2 border-gray-600 shadow-xl ">
                
             <div className="h-[13rem]  w-full p-4 rounded-lg shadow-md overflow-y-auto">
                 <div className="h-full w-full flex flex-col text-sm font-bold text-white">

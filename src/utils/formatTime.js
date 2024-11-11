@@ -5,7 +5,7 @@ export function parseDateTimeWithZ(isoString) {
     const day = String(date.getUTCDate()).padStart(2, "0");
     const month = String(date.getUTCMonth() + 1).padStart(2, "0"); // Months are 0-based
     const year = date.getUTCFullYear();
-    const formattedDate = `${day}::${month}::${year}`;
+    const formattedDate = `${day}/${month}/${year}`;
   
     // Extract and format the time as "HH:MM"
     const hours = String(date.getUTCHours()).padStart(2, "0");

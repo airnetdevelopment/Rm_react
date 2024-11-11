@@ -14,6 +14,7 @@ import { createNewPackageThunk } from "../../redux/features/packageSlice";
 import {  HashLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import TabularPackage from "../../Components/package/TabularView";
+import { FaEnvelope, FaWhatsapp } from "react-icons/fa";
 
 
 const tabs = [
@@ -39,6 +40,8 @@ const Package = () => {
     const [activeTab, setActiveTab] = useState("trips");
     
 
+    const didFetchPackage =useRef(false);
+
     // useEffect(() => {
 
     //     if (packageCreation &&  packageCreation?.finalPackage) {
@@ -49,12 +52,15 @@ const Package = () => {
     //         if ( routeSelection?.selectedRoute?.unique_key) {
     //             const routeId = routeSelection.selectedRoute.unique_key;
     //             getNewPackage(routeId);
+
+    //             console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    //             console.log(finalPackage);
     //         } else {
     //             navigate("/route");
     //         }
     //     }
 
-    // }, [routeSelection]);
+    // }, [routeSelection,finalPackage]);
 
 
     const sections = {
@@ -167,37 +173,30 @@ const Package = () => {
                 </div>
 
                 {/* right section */}
-                <div className='w-[30%] flex flex-col items-center'>
+                <div className='w-[30%] flex flex-col items-center gap-16 mt-20'>
 
-                    <div className='flex justify-center flex-row space-x-4 h-16 mt-4 mr-4'>
-                        <Button label="Check Availabilty" severity="danger" className='mt-5 text-white p-2 font-bold text-sm h-10 w-36 bg-red-500'></Button>
-                        <Button label="CheckOut Transition" severity="info" className='mt-5 p-2 text-white font-bold text-sm h-10 w-24 bg-indigo-900'></Button>
+                    <div className='w-full flex justify-center flex-row space-x-4 '>
+                        <button className=' text-white font-medium text-sm bg-green-700 px-4 py-2 rounded-md shadow-lg hover:bg-green-800  '>Check Availabilty</button>
+                        <button className='text-white font-medium text-sm bg-amber-500 px-4 py-2 rounded-md shadow-lg hover:bg-amber-600 '>Check Holdability</button>
+                    
                     </div>
 
-                    <div className='flex justify-center flex-row space-x-4 h-16 mt-4 mr-4'>
-                        <Button label="Holidability Status" severity="danger" className='mt-5 text-white p-2 font-bold text-sm h-10 w-36 bg-yellow-500'></Button>
-                        {/* <Button label="CheckOut Transition" severity="info" className='mt-5 p-2 text-white font-bold text-sm h-10 w-24 bg-indigo-900'></Button> */}
+                    <div className='w-full px-8'>
+                        <div className="flex flex-col items-center gap-4  rounded-xl py-2 " >
+                            <h2 className='underline font-bold text-indigo-900'>Share Itinerary</h2>
+                            <div className='flex items-center justify-center gap-4 '>
+                                <button className='font-medium text-sm flex items-center gap-2 rounded-xl  text-green-600 border border-green-600 hover:bg-green-50 px-2 py-1 hover:text-green-700 '> <span> <FaWhatsapp/> </span>  Whatsapp</button>
+                                <button className='font-medium text-sm flex items-center gap-2 rounded-xl  text-pink-600 border border-pink-600 hover:bg-pink-50 px-2 py-1 hover:text-pink-700'><span> <FaEnvelope /> </span> Gmail</button>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className='mt-4 mb-4'>
-                        <h2 className='underline font-bold text-indigo-900'>Share Itinerary</h2>
-                        <div className='flex flex-row justify-center space-x-4 h-12 mr-4'></div>
-                        <Button label="Whatsapp" severity="info" className='p-2 text-white font-bold text-sm h-10 w-24 bg-indigo-900'></Button>
-                        <Button label="Gmail" severity="info" className='p-2 text-white font-bold text-sm h-10 w-24 bg-indigo-900'></Button>
+                    <div className="w-full px-8" >
+                        <PaymentDetails className="w-full" />
                     </div>
-
-                    <div>
-                        <PaymentDetails className="w-[18rem] bg-indigo-900" />
-                    </div>
-
-                    <div className='flex justify-center flex-row space-x-4 h-16 mt-4 mr-4'>
-                        <Button label="Check Availabilty" severity="danger" className='mt-5 text-white p-2 font-bold text-sm h-10 w-36 bg-red-500'></Button>
-                        <Button label="Check Out" severity="danger" className='mt-5 p-2 text-white font-bold text-sm bg-red-500 h-10 w-24'></Button>
-                    </div>
-
 
                     {/*route section  */}
-                    <div className="w-[18rem] bg-white shadow-lg rounded-lg mt-20">
+                    <div className="w-full px-4 bg-white shadow-lg rounded-lg ">
                         <div className="bg-indigo-900 pt-2 pb-1 text-white">
                             <h2 className="text-lg font-semibold mb-5">Route of Travel</h2>
                         </div>

@@ -11,6 +11,7 @@ import { formatDuration } from "../../../utils/formatDuration";
 import flightStop1 from "../../../assets/Iconslatestpackage/icons/flightStop1.png";
 
 import { Tooltip } from "primereact/tooltip";
+import { PropagateLoader } from "react-spinners";
 
 
 const dummy= [
@@ -799,10 +800,10 @@ const layovers = [
         airportChange: "Yes"
     }
 ];
-  
-
 
 const FlightCard = ({flightEvents}) => {
+
+    const [loading, setLoading] = useState(true);
 
     const [flightDetails,setFlightDetails] = useState(null);    
     const [currentIndex1, setCurrentIndex1] = useState(0); 
@@ -811,8 +812,8 @@ const FlightCard = ({flightEvents}) => {
 
     useEffect(() => {
         const flight = convertFlightData(dummy);
-        console.log(flight);
         setFlightDetails(flight);
+        setLoading(false);
     }, [flightEvents]);
 
     // Count the number of layovers
@@ -867,6 +868,13 @@ const FlightCard = ({flightEvents}) => {
     //     }, 5000);
     // };
     
+    if(loading){
+        return (
+            <div className="my-8" >
+                <PropagateLoader color="#453de1" />
+            </div>
+        );
+    }
 
     return (
         <>
